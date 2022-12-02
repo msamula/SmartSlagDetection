@@ -1,0 +1,31 @@
+:root{
+    --width: 640px;                                 /*  2*320px     HARD CODED*/
+}
+
+body{
+    background-color: #212529;
+}
+
+/*canvas for aoi over image */
+.outsideWrapper{                                    /*dynamisch!!!*/
+    width:  var(--width);                           /*dynamisch!!!*/
+    height: calc(var(--width)/1.3333333);           /*dynamisch!!!*/
+
+    margin: 5%;
+}
+.insideWrapper{
+    width:100%;
+    height:100%;
+    position:relative;
+}
+.coveredImage{
+    width:100%;
+    height:100%;
+    position:absolute;
+}
+.coveringCanvas {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0);
+}
