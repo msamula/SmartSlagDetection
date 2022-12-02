@@ -1,12 +1,18 @@
+body{
+    background-color: #212529;
+    color: white;
+}
+
+.row{
+    margin-top: 1%;
+}
+
+
+/*canvas for aoi over image */
 :root{
     --width: 640px;                                 /*  2*320px     HARD CODED*/
 }
 
-body{
-    background-color: #212529;
-}
-
-/*canvas for aoi over image */
 .outsideWrapper{                                    /*dynamisch!!!*/
     width:  var(--width);                           /*dynamisch!!!*/
     height: calc(var(--width)/1.3333333);           /*dynamisch!!!*/
@@ -34,4 +40,82 @@ body{
     margin: 0px;
     white-space: nowrap;
     text-align: start;
+}
+
+/*TEXT*/
+.myText{
+    color: white;
+    font-weight: bold;
+    font-size: x-large;
+    font-family: "Calibri";
+}
+
+/*ALARM*/
+.sign {
+    text-align: center;
+    white-space: nowrap;
+
+    color: black;
+    font-weight: bold;
+    font-family: "Gill Sans", sans-serif;
+    font-size: xx-large;
+
+    padding: 0px;
+    max-width: 200px;
+    border-radius: 25px;
+}
+
+/*MEDIA QUERIES*/
+/*media queries for different display resolutions*/
+@media (min-width: 0px) {
+    .coveredImage {
+        left: -10px;
+    }
+    .coveringCanvas {
+        left: -10px;
+    }
+}
+/* Small devices (landscape phones, 544px and up) */
+@media (min-width: 544px) {
+    .coveredImage {
+        left: -20px;
+    }
+    .coveringCanvas {
+        left: -20px;
+    }
+}
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {
+    .coveredImage {
+        left: 0%;
+    }
+    .coveringCanvas {
+        left: 0%;
+    }
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .coveredImage {
+        left: 20%;
+    }
+    .coveringCanvas {
+        left: 20%;
+    }
+}
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .coveredImage {
+        left: 35%;
+    }
+    .coveringCanvas {
+        left: 35%;
+    }
+}
+@media (min-width: 1400px) {
+    .coveredImage {
+        left: 0px;
+    }
+    .coveringCanvas {
+        left: 0px;
+    }
 }

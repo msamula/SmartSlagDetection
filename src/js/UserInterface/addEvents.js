@@ -6,6 +6,8 @@ export function addBtnEvents(user){
 
     /*Status Button*/
     document.getElementById('statusOpen').addEventListener('click', ()=>{
+        loadStatus(user.ip);
+
         loadStatusInterval = setInterval(()=>{
             loadStatus(user.ip);
         },1000);

@@ -2,7 +2,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/custom.css';
 
-import {User} from "./DataHandler/Models";
+import {User} from "./DataHandler/models";
 import {getToken} from "./DataAccess/getToken";
 import {getJobInfo} from "./DataAccess/getJobInfo";
 import {getImage} from "./DataAccess/getImage";

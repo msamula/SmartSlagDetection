@@ -1,4 +1,5 @@
 import {expireTime, token} from "./getToken";
+import {handleResults} from "../DataHandler/resultsHandler";
 
 function awaitNewToken(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -19,8 +20,7 @@ export async function getData(ip) {
         .then((response) => response.json())
         .then((json) => {
 
-            /*HARD CODED AOI_0_Result      json.results[1].value[0]-273.15*/
-            /*HARD CODED AOI_1_Result      json.results[2].value[0]-273.15*/
+            handleResults(json);
 
             //start new request after the previous one is done
             getData(ip);

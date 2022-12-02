@@ -1,4 +1,4 @@
-import {Token} from "../DataHandler/Models";
+import {Token} from "../DataHandler/models";
 
 //TOKEN used by other functions
 export let token;

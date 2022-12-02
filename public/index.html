@@ -10,6 +10,7 @@
 <body>
 <script src="bundle.js"></script>
 
+<div class="container text-center">
     <div class="row">
 
         <div class="col-xxl-2">
@@ -33,7 +34,25 @@
             </div>
         </div>
 
-        <div class="col-xxl-6">
+        <div class="col-xxl-6 text-start" style="padding-left: 10%">
+
+            <p id="dateTime"    class="myText"  >Date/Time: </p>
+            <p id="vessel"      class="myText"  >BOF Vessel: 1</p>
+            <p id="heat"        class="myText"  >Heat #: 8729</p>
+            <p id="tapTemp"     class="myText"  >Tap Temperature: 0°C</p>
+
+            <div class="row" style="margin-top: 5%">
+                <div class="col-4">
+                </div>
+
+                <div id="alarm" class="col-4 alert sign" role="alert" style="background-color: rgba(0, 255, 0,1)">
+                    ALARM
+                </div>
+
+                <div class="col-4">
+                </div>
+            </div>
+
         </div>
 
     </div>
@@ -155,6 +174,6 @@
 
         </div>
     </div>
-
+</div>
 </body>
 </html>
