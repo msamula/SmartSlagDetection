@@ -17,7 +17,7 @@ export function drawAOI(coordinatesArray, width, height){
                     ctx.lineTo(coordinatesArray[i][j][0], coordinatesArray[i][j][1]);
                 }
                 ctx.closePath();
-                ctx.lineWidth   = 2;
+                ctx.lineWidth   = 1;
                 ctx.strokeStyle = 'rgba(61, 168, 245, 0.8)';
                 ctx.fillStyle   = 'rgba(61, 168, 245, 0.2)';
                 ctx.stroke();
@@ -30,7 +30,7 @@ export function drawAOI(coordinatesArray, width, height){
                 for (let j = 2; j < coordinatesArray[i].length; j++) {
                     ctx.lineTo(coordinatesArray[i][j][0], coordinatesArray[i][j][1]);
                 }
-                ctx.lineWidth   = 2;
+                ctx.lineWidth   = 1;
                 ctx.strokeStyle = 'rgba(61, 168, 245, 0.8)';
                 ctx.stroke();
             }

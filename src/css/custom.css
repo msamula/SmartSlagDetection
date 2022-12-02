@@ -10,8 +10,6 @@ body{
 .outsideWrapper{                                    /*dynamisch!!!*/
     width:  var(--width);                           /*dynamisch!!!*/
     height: calc(var(--width)/1.3333333);           /*dynamisch!!!*/
-
-    margin: 5%;
 }
 .insideWrapper{
     width:100%;
@@ -28,4 +26,12 @@ body{
     height: 100%;
     position: absolute;
     background-color: rgba(0, 0, 0, 0);
+}
+
+/*Status*/
+.info{
+    font-size: smaller;
+    margin: 0px;
+    white-space: nowrap;
+    text-align: start;
 }

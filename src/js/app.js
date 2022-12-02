@@ -7,6 +7,8 @@ import {getToken} from "./DataAccess/getToken";
 import {getJobInfo} from "./DataAccess/getJobInfo";
 import {getImage} from "./DataAccess/getImage";
 import {drawAOI} from "./UserInterface/drawAOI";
+import {loadInfo} from "./UserInterface/loadInfo";
+import {addBtnEvents} from "./UserInterface/addEvents";
 
 
 //login data
@@ -33,6 +35,11 @@ getToken(user.ip,user.clientID,user.clientSecret,user.username,user.password);
 let job = getJobInfo(user.ip, jobName);
 
 window.addEventListener('DOMContentLoaded', () => {
+
+    //Userinterface
+    addBtnEvents(user);
+    loadInfo(user.ip);
+
 
     //draw AOI
     drawAOI(job[1], sequenzWidth, sequenzHeight);

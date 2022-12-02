@@ -8,25 +8,153 @@
 </head>
 
 <body>
+<script src="bundle.js"></script>
 
-<div class="row">
+    <div class="row">
 
-    <div class="col-xxl-6">
-        <div class="outsideWrapper">
-            <div class="insideWrapper">
+        <div class="col-xxl-2">
+            <button id="statusOpen"  class="btn btn-sm btn-light" style="margin-left: 17%; margin-top: 5%" data-bs-toggle="offcanvas" data-bs-target="#deviceInfo" aria-controls="deviceInfo">Status</button>
+            <button id="configBtn"  class="btn btn-sm btn-light" style="margin-top: 5%">Configure</button>
+        </div>
 
-                <img id="img" class="rounded coveredImage" src="./media/noImage.jpg">
-                <canvas id="aoi" class="rounded coveringCanvas"></canvas>
+        <div class="col-xxl-10">
+        </div>
 
+    </div>
+
+    <div class="row">
+
+        <div class="col-xxl-6">
+            <div class="outsideWrapper" style="margin-left: 5%; margin-top: 2%">
+                <div class="insideWrapper">
+                    <img id="img" class="rounded coveredImage" src="./media/noImage.jpg">
+                    <canvas id="aoi" class="rounded coveringCanvas"></canvas>
+                </div>
             </div>
+        </div>
+
+        <div class="col-xxl-6">
+        </div>
+
+    </div>
+
+
+    <!--Status-->
+
+    <div class="offcanvas offcanvas-start text-bg-dark" data-bs-scroll="true" tabindex="-1" id="deviceInfo" aria-labelledby="deviceInfoTitle" style="--bs-offcanvas-width: 450px; opacity: 90%;">
+
+        <div class="offcanvas-header">
+            <h4 class="offcanvas-title" id="deviceInfoTitle" style="margin-left: 2%">Status</h4>
+            <button id="statusClose" type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+        <div class="offcanvas-body text-start text">
+
+            <h4 style="margin-left: 2%">Device Info</h4>
+
+            <table class="table" style="color: white">
+                <tbody>
+                    <tr>
+                        <td class="info">User defined name: </td>
+                        <td class="info" id="friendlyName"></td>
+                    </tr>
+                    <tr>
+                        <td class="info">Active Package: </td>
+                        <td class="info" id="activePackage"></td>
+                    </tr>
+                    <tr>
+                        <td class="info">Model Name: </td>
+                        <td class="info" id="modelName"></td>
+                    </tr>
+                    <tr>
+                        <td class="info">Serial Number: </td>
+                        <td class="info" id="serialNumber"></td>
+                    </tr>
+                    <tr>
+                        <td class="info">Part Number: </td>
+                        <td class="info" id="partNumber"></td>
+                    </tr>
+                    <tr>
+                        <td class="info">Device Version: </td>
+                        <td class="info" id="deviceVers"></td>
+                    </tr>
+                    <tr>
+                        <td class="info">Firmware Version: </td>
+                        <td class="info" id="firmware"></td>
+                    </tr>
+                    <tr>
+                        <td class="info">MAC Address: </td>
+                        <td class="info" id="macAddress"></td>
+                    </tr>
+                    <tr>
+                        <td class="info">IP Mode: </td>
+                        <td class="info" id="ipMode"></td>
+                    </tr>
+                    <tr>
+                        <td class="info">Hostname: </td>
+                        <td class="info" id="hostName"></td>
+                    </tr>
+                    <tr>
+                        <td class="info">IPv4: </td>
+                        <td class="info" id="ipAddress"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4 style="margin-left: 2%; margin-top: 2%">Device Status</h4>
+
+            <table class="table" style="color: white">
+                <tbody>
+                    <tr style="font-size: larger">
+                        <td class="info">Service</td>
+                        <td class="info">Active</td>
+                        <td class="info">Connections</td>
+                    </tr>
+                    <tr>
+                        <td class="info">gev: </td>
+                        <td class="info" id="gevActive"></td>
+                        <td class="info" id="gevConnections"></td>
+                    </tr>
+                    <tr>
+                        <td class="info">http: </td>
+                        <td class="info" id="httpActive"></td>
+                        <td class="info" id="httpConnections"></td>
+                    </tr>
+                    <tr>
+                        <td class="info">modbusTcpMaster: </td>
+                        <td class="info" id="masterActive"></td>
+                        <td class="info" id="masterConnections"></td>
+                    </tr>
+                    <tr>
+                        <td class="info">modbusTcpSlave: </td>
+                        <td class="info" id="slaveActive"></td>
+                        <td class="info" id="slaveConnections"></td>
+                    </tr>
+                    <tr style="font-size: larger">
+                        <td class="info">Sensor</td>
+                        <td class="info">Temperature</td>
+                        <td class="info"></td>
+                    </tr>
+                    <tr>
+                        <td class="info">mainboard: </td>
+                        <td class="info" id="mainboardTemp"></td>
+                        <td class="info"></td>
+                    </tr>
+                    <tr>
+                        <td class="info">min: </td>
+                        <td class="info" id="minTemp"></td>
+                        <td class="info"></td>
+                    </tr>
+                    <tr>
+                        <td class="info">max: </td>
+                        <td class="info" id="maxTemp"></td>
+                        <td class="info"></td>
+                    </tr>
+                </tbody>
+            </table>
+
         </div>
     </div>
 
-    <div class="col-xxl-6">
-    </div>
-
-</div>
-
-<script src="bundle.js"></script>
 </body>
 </html>
