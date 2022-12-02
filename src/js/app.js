@@ -9,6 +9,7 @@ import {getImage} from "./DataAccess/getImage";
 import {drawAOI} from "./UserInterface/drawAOI";
 import {loadInfo} from "./UserInterface/loadInfo";
 import {addBtnEvents} from "./UserInterface/addEvents";
+import {getData} from "./DataAccess/getData";
 
 
 //login data
@@ -46,5 +47,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
     //get image
     getImage(user);
+
+    //get data
+    getData(user.ip);
 
 });

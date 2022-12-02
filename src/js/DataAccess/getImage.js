@@ -1,5 +1,4 @@
-import {token} from "./getToken";
-//import {checkToken} from "../DataHandler/checkToken";
+import {checkToken, token} from "./getToken";
 
 
 //get the camera image
@@ -8,7 +7,7 @@ export async function getImage(user)
 {
     let image = document.getElementById('img');
 
-    //await checkToken(user);
+    await checkToken(user);
 
     let response = await fetch(`http://${user.ip}/api/images/live`, {
         headers: {

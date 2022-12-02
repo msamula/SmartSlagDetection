@@ -40,3 +40,16 @@ export async function refreshToken(ip,cliId,cliSecret,refreshToken){
 
     token = await new Token(json['access_token'],json['token_type'],json['expires_in'],json['scope'],json['refresh_token'],json['iat'],json['exp']);
 }
+
+
+//check if token is expired
+export let expireTime;
+let now;
+export async function checkToken(user){
+    now = new Date();
+    expireTime = (token.exp*1000 - now)/1000;
+
+    if(expireTime <= 60){
+        await refreshToken(user.ip, user.clientID, user.clientSecret, token.refreshToken);
+    }
+}
