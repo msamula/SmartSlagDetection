@@ -1,0 +1,20 @@
+{
+  "name": "smartslagdetection",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack server"
+  },
+  "devDependencies": {
+    "css-loader": "^6.7.2",
+    "source-map-loader": "^4.0.1",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.0",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.3"
+  }
+}
