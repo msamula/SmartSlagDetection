@@ -10,6 +10,7 @@ import {drawAOI} from "./UserInterface/drawAOI";
 import {loadInfo} from "./UserInterface/loadInfo";
 import {addBtnEvents} from "./UserInterface/addEvents";
 import {getData} from "./DataAccess/getData";
+import {createChart} from "./UserInterface/charts";
 
 
 //login data
@@ -40,7 +41,7 @@ window.addEventListener('DOMContentLoaded', () => {
     //Userinterface
     addBtnEvents(user);
     loadInfo(user.ip);
-
+    createChart();
 
     //draw AOI
     drawAOI(job[1], sequenzWidth, sequenzHeight);
