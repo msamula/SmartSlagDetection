@@ -1,8 +1,8 @@
 import Chart from 'chart.js/auto';
 
-export let slagChart;
+let slagChart;
 
-export function createChart(){
+export function createCharts(){
 
     slagChart = new Chart( document.getElementById('slagChart') , {
         type: 'bar',
@@ -10,7 +10,7 @@ export function createChart(){
             labels: ['Slag', 'Total Slag'],
             datasets: [{
                 label: 'Slag',
-                data: [50,66],
+                data: [],
                 backgroundColor: '#FF0000'
             }]
         },
@@ -33,23 +33,7 @@ export function createChart(){
     })
 }
 
-function removeData(chart) {
-    chart.data.labels.pop();
-    chart.data.datasets.forEach((dataset) => {
-        dataset.data.pop();
-    });
-    chart.update();
-}
-
-function addData(chart, label, data) {
-    chart.data.labels.push(label);
-    chart.data.datasets.forEach((dataset) => {
-        dataset.data.push(data);
-    });
-    chart.update('none');
-}
-
-export function updateChart(chart, label, data){
-    removeData(chart);
-    addData(chart, label, data);
+export function updateSlagChart(slag, totalSlag){
+    slagChart.data.datasets[0].data = [slag, totalSlag];
+    slagChart.update('none');
 }

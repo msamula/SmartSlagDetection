@@ -2,7 +2,7 @@
 /*HARD CODED AOI_1_Result (slag)        json.results[2].value[0]-273.15*/
 /*HARD CODED Tap Temp (max Temp in aoi) json.results[5].value[0]-273.15*/
 
-import {slagChart, updateChart} from "./charts";
+import {updateSlagChart} from "./charts";
 
 export function handleResults(json){
 
@@ -24,7 +24,7 @@ export function handleResults(json){
                 alarm.style.backgroundColor = 'rgba( 255, 0, 0, 1)';
             }
 
-            updateChart( ['Slag','Total Slag'], [(json.results[i].value[0]-273.15).toFixed(0),20]);
+            updateSlagChart( Number((json.results[i].value[0]-273.15).toFixed(0)), 20);
         }
     }
 }
