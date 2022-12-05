@@ -75,7 +75,7 @@ export function createCharts(){
     }
 }
 
-export function updateSlagChart(slag, totalSlag){
+export function updateCharts(slag, totalSlag){
 
     /*SLAG CHART*/
     //update data

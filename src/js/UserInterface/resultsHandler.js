@@ -2,7 +2,7 @@
 /*HARD CODED AOI_1_Result (slag)        json.results[2].value[0]-273.15*/
 /*HARD CODED Tap Temp (max Temp in aoi) json.results[5].value[0]-273.15*/
 
-import {updateSlagChart} from "./charts";
+import {updateCharts} from "./charts";
 
 export function handleResults(json){
 
@@ -26,7 +26,8 @@ export function handleResults(json){
 
             let slag = Number(json.results[i].value[0]-273.15);
 
-            updateSlagChart( slag.toFixed(0), slag.toFixed(0));
+            updateCharts( slag.toFixed(0), slag.toFixed(0));
+
             document.getElementById('slag').innerHTML = `${slag.toFixed(1)}%`;
             document.getElementById('totalSlag').innerHTML = `${slag.toFixed(1)}%`;
         }
