@@ -65,6 +65,20 @@ body{
     border-radius: 10px;
 }
 
+/*Slag + Total Slag Percentage*/
+.sign2{
+    -webkit-text-fill-color: rgba(255, 0, 0, 1);
+    background-color: transparent;
+    border-width: 2px;
+    border-color: black;
+    text-align: center;
+    font-weight: bold;
+    font-family: "Gill Sans", sans-serif;
+    padding: 0px;
+    max-width: 100px;
+    border-radius: 5px;
+}
+
 /*MEDIA QUERIES*/
 /*media queries for different display resolutions*/
 @media (min-width: 0px) {

@@ -24,7 +24,11 @@ export function handleResults(json){
                 alarm.style.backgroundColor = 'rgba( 255, 0, 0, 1)';
             }
 
-            updateSlagChart( Number((json.results[i].value[0]-273.15).toFixed(0)), 20);
+            let slag = Number(json.results[i].value[0]-273.15);
+
+            updateSlagChart( slag.toFixed(0), slag.toFixed(0));
+            document.getElementById('slag').innerHTML = `${slag.toFixed(1)}%`;
+            document.getElementById('totalSlag').innerHTML = `${slag.toFixed(1)}%`;
         }
     }
 }
