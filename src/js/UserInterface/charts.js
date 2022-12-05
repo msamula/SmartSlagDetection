@@ -48,8 +48,7 @@ export function createCharts(){
                 label: 'Slag',
                 data: [],
                 borderWidth: 1,
-                backgroundColor: '#FF0000',
-                color: '#FFF'
+                backgroundColor: '#FF0000'
             }]
         },
         options: {
