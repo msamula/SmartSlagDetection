@@ -15,22 +15,38 @@ export function createCharts(){
     slagChart = new Chart( document.getElementById('slagChart') , {
         type: 'bar',
         data: {
-            labels: ['Slag', 'Total Slag'],
+            labels: [''],
             datasets: [{
+                yAxisID: 'slag',
                 label: 'Slag',
                 data: [],
                 backgroundColor: '#FF0000'
+            },
+            {
+                yAxisID: 'totalSlag',
+                label: 'Total Slag',
+                data: [],
+                backgroundColor: '#000000'
             }]
         },
         options: {
             scales: {
-                y: {
-                    max: 100,
+                slag: {
+                    type: 'linear',
+                    position: 'left',
                     min: 0,
-                    grid: {
-                        display: false
-                    }
+                    max: 100,
+                    grid: { display: false }
                 },
+
+                totalSlag: {
+                    type: 'linear',
+                    position: 'right',
+                    min: 0,
+                    max: 5,
+                    grid: { display: false }
+                },
+
                 x: {
                     grid: {
                         display: false
@@ -78,7 +94,8 @@ export function updateCharts(slag, totalSlag){
 
     /*SLAG CHART*/
     //update data
-    slagChart.data.datasets[0].data = [slag, totalSlag];
+    slagChart.data.datasets[0].data = [slag];
+    slagChart.data.datasets[1].data = [totalSlag];
 
 
     /*TIME CHART*/
@@ -94,6 +111,6 @@ export function updateCharts(slag, totalSlag){
         timeChart.data.datasets[0].data.shift();
     }
 
-    slagChart.update('none');
-    timeChart.update('none');
+    slagChart.update();
+    timeChart.update();
 }
