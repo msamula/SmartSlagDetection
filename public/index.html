@@ -15,7 +15,7 @@
 
         <div class="col-xxl-2">
             <button id="statusOpen"  class="btn btn-sm btn-light" style="margin-left: 17%; margin-top: 5%" data-bs-toggle="offcanvas" data-bs-target="#deviceInfo" aria-controls="deviceInfo">Status</button>
-            <button id="configBtn"  class="btn btn-sm btn-light" style="margin-top: 5%">Configure</button>
+            <button id="configBtn"  class="btn btn-sm btn-light" style="margin-top: 5%" data-bs-toggle="offcanvas" data-bs-target="#configure" aria-controls="configure">Configure</button>
         </div>
 
         <div class="col-xxl-10">
@@ -32,6 +32,8 @@
                     <canvas id="aoi" class="rounded coveringCanvas"></canvas>
                 </div>
             </div>
+
+            <canvas id="timeChart" style="margin-top: 5%"></canvas>
         </div>
 
         <div class="col-xxl-6 text-start" style="padding-left: 10%">
@@ -192,6 +194,92 @@
 
         </div>
     </div>
+
+    <!--Configure-->
+
+    <div class="offcanvas offcanvas-start text-bg-dark" data-bs-scroll="true" tabindex="-1" id="configure" aria-labelledby="configureTitle" style="--bs-offcanvas-width: 90%; opacity: 90%;">
+
+        <div class="offcanvas-header">
+            <h4 class="offcanvas-title" id="configureTitle" style="margin-left: 2%">Configure</h4>
+            <button id="configureClose" type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+        <div class="offcanvas-body text-start text">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-xxl-4">
+
+                        <h5 style="margin-left: 6.5%; margin-bottom: 10%">Thresholds</h5>
+
+                        <div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <p class="text-start">Area Temperature Threshold</p>
+                                <p id="areaTempThresholdDisplay" style="background-color: rgba(255,255,255,0.2); width: 100px">1000 Kelvin</p>
+                            </div>
+                            <input id="areaTempThreshold" type="range" class="form-range" min="0" max="1200" step="1" id="areaTempRange" >
+                        </div>
+
+                        <div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <p class="text-start">Slag Temperature Threshold</p>
+                                <p id="slagTempThresholdDisplay" style="background-color: rgba(255,255,255,0.2); width: 100px">1300 Kelvin</p>
+                            </div>
+                            <input id="slagTempThreshold" type="range" class="form-range" min="0" max="1500" step="1" id="slagTempRange" >
+                        </div>
+
+                        <div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <p class="text-start">Slag % Threshold</p>
+                                <p id="slagPercDisplay" style="background-color: rgba(255,255,255,0.2); width: 100px">40 %</p>
+                            </div>
+                            <input id="slagPerc" type="range" class="form-range" min="0" max="100" step="1" id="slagThreshold" >
+                            <!--ÄNDERN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+                        </div>
+
+                        <div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <p class="text-start" style="white-space: nowrap;">Total Slag % Threshold</p>
+                                <p id="totalSlagPercDisplay" style="background-color: rgba(255,255,255,0.2); white-space: nowrap; width: 100px">2 %</p>
+                            </div>
+                            <input id="totalSlagPerc" type="range" class="form-range" min="0" max="100" step="0.5" id="totalSlagThreshold" >
+                            <!--ÄNDERN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+                        </div>
+                    </div>
+
+<!--                    <div class="col-xxl-8">
+
+                        <h5 style="margin-left: 6.5%; margin-bottom: 5%">AOI</h5>
+
+                        <div class="btn-group text-center" role="group" style="max-width: 500px">
+                            <button class="btn btn-sm btn-light" id="refreshImage" title="refresh Image"><img src="./media/refresh_30.png" style="max-height: 20px;"> refresh Image</button>
+                            <button class="btn btn-sm btn-warning" id="drawAOIBtn" title="draw Rectangle" style="min-width: 150px"><img src="./media/rect_30.png" style="max-height: 20px;"> draw Rectangle</button>
+                            <button class="btn btn-sm btn-danger" id="saveAOIBtn" title="save AOI"><img src="./media/save_30.png" style="max-height: 20px;"> save AOI</button>
+                        </div>
+
+                        <div class="row">
+                            <div class="drawAOI">
+                                <div class="outsideWrapper">
+                                    <div class="insideWrapper">
+
+                                        <svg id="drawAoiSvg" class="rounded coveredImage" style='background: transparent; display: none'>
+                                            <rect   id="rect" stroke='rgba(61, 168, 245, 1)' fill='rgba(61, 168, 245, 0.5)'/>
+                                            <circle id="bluePoint" fill='blue' r='5'/>
+                                            <circle id="redPoint"  fill='red' r='5' />
+                                        </svg>
+
+                                        <canvas class="rounded coveringCanvas"  id="drawAOICanvas" style="opacity: 60%"></canvas>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 </body>
 </html>
