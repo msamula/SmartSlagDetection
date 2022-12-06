@@ -1,6 +1,6 @@
 import Chart from 'chart.js/auto';
 import annotationPlugin from 'chartjs-plugin-annotation';
-import {slagPercentage} from "./addEvents";
+import {slagPercentage, totalSlagPercentage} from "./addEvents";
 
 let slagChart, timeChart;
 
@@ -24,13 +24,13 @@ export function createCharts(){
                 yAxisID: 'slag',
                 label: 'Slag',
                 data: [],
-                backgroundColor: '#FF0000'
+                backgroundColor: '#FF2200'
             },
             {
                 yAxisID: 'totalSlag',
                 label: 'Total Slag',
                 data: [],
-                backgroundColor: '#000000'
+                backgroundColor: '#9D0000'
             }]
         },
         options: {
@@ -65,17 +65,17 @@ export function createCharts(){
                             yMin: slagPercentage,
                             yMax: slagPercentage,
                             xMax: 0,
-                            borderColor: 'rgba(0, 255, 0, 1)',
-                            borderWidth: 1
+                            borderColor: 'rgba(255, 255, 255, 0.4)',
+                            borderWidth: 2
                         },
                         totalSlag: {
                             type: 'line',
-                            yMin: 40,
-                            yMax: 40,
+                            yMin: totalSlagPercentage * 20,
+                            yMax: totalSlagPercentage * 20,
                             xMin: 0,
                             xMax: 1,
-                            borderColor: 'rgba(0, 255, 0, 1)',
-                            borderWidth: 1
+                            borderColor: 'rgba(255, 255, 255, 0.4)',
+                            borderWidth: 2
                         }
                     }
                 }
@@ -116,8 +116,8 @@ export function createCharts(){
                             type: 'line',
                             yMin: slagPercentage,
                             yMax: slagPercentage,
-                            borderColor: 'rgba(0, 255, 0, 1)',
-                            borderWidth: 1
+                            borderColor: 'rgba(255, 255, 255, 0.5)',
+                            borderWidth: 2
                         }
                     }
                 }
@@ -156,5 +156,42 @@ export function updateCharts(slag, totalSlag){
 }
 
 export function updateChartLines(slagValue, totalSlagValue) {
-    console.log(slagChart._plugins);
+
+    slagChart.options.plugins = {
+        annotation: {
+            annotations: {
+                slag: {
+                    type: 'line',
+                    yMin: slagValue,
+                    yMax: slagValue,
+                    xMax: 0,
+                    borderColor: 'rgba(255, 255, 255, 0.4)',
+                    borderWidth: 2
+                },
+                totalSlag: {
+                    type: 'line',
+                    yMin: totalSlagValue * 20,
+                    yMax: totalSlagValue * 20,
+                    xMin: 0,
+                    xMax: 1,
+                    borderColor: 'rgba(255, 255, 255, 0.4)',
+                    borderWidth: 2
+                }
+            }
+        }
+    };
+
+    timeChart.options.plugins = {
+        annotation: {
+            annotations: {
+                slag: {
+                    type: 'line',
+                    yMin: slagValue,
+                    yMax: slagValue,
+                    borderColor: 'rgba(255, 255, 255, 0.5)',
+                    borderWidth: 2
+                }
+            }
+        }
+    };
 }

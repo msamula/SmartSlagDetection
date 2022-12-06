@@ -37,11 +37,12 @@ export function addBtnEvents(user){
     slagPerc.addEventListener('input',()=>{
         slagPercDisplay.innerHTML = `${slagPerc.value} %`;
         slagPercentage = Number(slagPerc.value);
-        //updateChartLines();
+        updateChartLines(slagPercentage, totalSlagPercentage);
     });
     totalSlagPerc.addEventListener('input',()=>{
         totalSlagPercDisplay.innerHTML = `${totalSlagPerc.value} %`;
         totalSlagPercentage = Number(totalSlagPerc.value);
+        updateChartLines(slagPercentage, totalSlagPercentage);
     });
 
 
