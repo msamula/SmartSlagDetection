@@ -97,6 +97,13 @@ body{
     .coveringCanvas {
         left: -20px;
     }
+    .slagSign{
+        margin-left: 23%;
+    }
+    .totalSlagSign{
+        margin-left: 57%;
+        margin-top: -9.2%;
+    }
 }
 /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
 @media (min-width: 768px) {
@@ -105,6 +112,13 @@ body{
     }
     .coveringCanvas {
         left: 0%;
+    }
+    .slagSign{
+        margin-left: 18%;
+    }
+    .totalSlagSign{
+        margin-left: 47%;
+        margin-top: -6.8%;
     }
 }
 /* Large devices (desktops, 992px and up) */
@@ -115,6 +129,13 @@ body{
     .coveringCanvas {
         left: 20%;
     }
+    .slagSign{
+        margin-left: 14%;
+    }
+    .totalSlagSign{
+        margin-left: 35%;
+        margin-top: -5.2%;
+    }
 }
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
@@ -124,6 +145,13 @@ body{
     .coveringCanvas {
         left: 35%;
     }
+    .slagSign{
+        margin-left: 12%;
+    }
+    .totalSlagSign{
+        margin-left: 30%;
+        margin-top: -4.4%;
+    }
 }
 @media (min-width: 1400px) {
     .coveredImage {
@@ -132,4 +160,12 @@ body{
     .coveringCanvas {
         left: 0px;
     }
+    .slagSign{
+        margin-left: 50%;
+    }
+    .totalSlagSign{
+        margin-left: 15%;
+        margin-top: 0%;
+    }
 }
+

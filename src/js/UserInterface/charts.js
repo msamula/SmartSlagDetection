@@ -1,4 +1,5 @@
 import Chart from 'chart.js/auto';
+import annotationPlugin from 'chartjs-plugin-annotation';
 
 let slagChart, timeChart;
 
@@ -11,6 +12,8 @@ function addData(chart, label, data) {
 }
 
 export function createCharts(){
+
+    Chart.register(annotationPlugin);
 
     slagChart = new Chart( document.getElementById('slagChart') , {
         type: 'bar',
@@ -52,6 +55,29 @@ export function createCharts(){
                         display: false
                     }
                 }
+            },
+            plugins: {
+                annotation: {
+                    annotations: {
+                        slag: {
+                            type: 'line',
+                            yMin: 40,
+                            yMax: 40,
+                            xMax: 0,
+                            borderColor: 'rgba(0, 255, 0, 1)',
+                            borderWidth: 1
+                        },
+                        totalSlag: {
+                            type: 'line',
+                            yMin: 40,
+                            yMax: 40,
+                            xMin: 0,
+                            xMax: 1,
+                            borderColor: 'rgba(0, 255, 0, 1)',
+                            borderWidth: 1
+                        }
+                    }
+                }
             }
         }
     });
@@ -79,6 +105,19 @@ export function createCharts(){
                 x: {
                     grid: {
                         display: false
+                    }
+                }
+            },
+            plugins: {
+                annotation: {
+                    annotations: {
+                        slag: {
+                            type: 'line',
+                            yMin: 40,
+                            yMax: 40,
+                            borderColor: 'rgba(0, 255, 0, 1)',
+                            borderWidth: 1
+                        }
                     }
                 }
             }
