@@ -1,5 +1,6 @@
 import Chart from 'chart.js/auto';
 import annotationPlugin from 'chartjs-plugin-annotation';
+import {slagPercentage} from "./addEvents";
 
 let slagChart, timeChart;
 
@@ -61,8 +62,8 @@ export function createCharts(){
                     annotations: {
                         slag: {
                             type: 'line',
-                            yMin: 40,
-                            yMax: 40,
+                            yMin: slagPercentage,
+                            yMax: slagPercentage,
                             xMax: 0,
                             borderColor: 'rgba(0, 255, 0, 1)',
                             borderWidth: 1
@@ -113,8 +114,8 @@ export function createCharts(){
                     annotations: {
                         slag: {
                             type: 'line',
-                            yMin: 40,
-                            yMax: 40,
+                            yMin: slagPercentage,
+                            yMax: slagPercentage,
                             borderColor: 'rgba(0, 255, 0, 1)',
                             borderWidth: 1
                         }
@@ -152,4 +153,8 @@ export function updateCharts(slag, totalSlag){
 
     slagChart.update();
     timeChart.update();
+}
+
+export function updateChartLines(slagValue, totalSlagValue) {
+    console.log(slagChart._plugins);
 }
