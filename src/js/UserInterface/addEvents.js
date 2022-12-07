@@ -3,12 +3,12 @@ import {updateChartLines} from "./charts";
 
 let loadStatusInterval;
 
-let areaMaxTemp = 800, targetMaxTemp = 1050;
+let areaMaxTemp, targetMaxTemp;
 
 export let slagPercentage = 40;
 export let totalSlagPercentage = 2;
 
-export function addBtnEvents(user){
+export function addBtnEvents(user, jobTempRanges){
 
     /*STATUS*/
     /*Open Status Button*/
@@ -39,6 +39,9 @@ export function addBtnEvents(user){
     let totalSlagPerc = document.getElementById('totalSlagPerc');
     let slagPercDisplay = document.getElementById('slagPercDisplay');
     let totalSlagPercDisplay = document.getElementById('totalSlagPercDisplay');
+
+    areaMaxTemp = jobTempRanges[0][0];
+    targetMaxTemp = jobTempRanges[1][0];
 
     areaTempThreshold.value = areaMaxTemp;
     slagTempThreshold.value = targetMaxTemp;

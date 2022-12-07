@@ -9,7 +9,7 @@ import {getImage} from "./DataAccess/getImage";
 import {drawAOI} from "./UserInterface/drawAOI";
 import {loadInfo} from "./UserInterface/loadInfo";
 import {addBtnEvents} from "./UserInterface/addEvents";
-import {getData} from "./DataAccess/getData";
+import {getResults} from "./DataAccess/getResults";
 import {createCharts} from "./UserInterface/charts";
 import {resizeImage} from "./UserInterface/resizeImage";
 
@@ -32,23 +32,23 @@ let user = new User(ipAddress,username,password,clientID,clientSecret);
 getToken(user.ip,user.clientID,user.clientSecret,user.username,user.password);
 
 //get Job Info
-let job = getJobInfo(user.ip, jobName);                                 //job[0] = thresholds      job[1] = coordinates     job[2] = image resolution
+let job = getJobInfo(user.ip, jobName);                                 //job[0] = thresholds       job[1] = coordinates      job[2] = aoi temperature ranges     job[3] = image resolution
 
 window.addEventListener('DOMContentLoaded', () => {
 
     //Userinterface
-    resizeImage( job[2].width, 2);
-    addBtnEvents(user);
+    resizeImage(job[3].width, 2);
+    addBtnEvents(user, job[2]);
     loadInfo(user.ip);
     createCharts();
 
     //draw AOI
-    drawAOI(job[1], job[2].width, job[2].height);
+    drawAOI(job[1], job[3].width, job[3].height);
 
     //get image
     getImage(user);
 
     //get data
-    getData(user.ip);
+    getResults(user.ip);
 
 });

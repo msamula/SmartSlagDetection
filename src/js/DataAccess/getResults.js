@@ -5,7 +5,7 @@ function awaitNewToken(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-export async function getData(ip) {
+export async function getResults(ip) {
 
     if(expireTime < 60.3){
         await awaitNewToken(500);
@@ -23,10 +23,10 @@ export async function getData(ip) {
             handleResults(json);
 
             //start new request after the previous one is done
-            getData(ip);
+            getResults(ip);
 
         })
         .catch(()=>{
-            getData(ip);
+            getResults(ip);
         })
 }

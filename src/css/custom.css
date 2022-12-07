@@ -1,5 +1,6 @@
 body{
     background-color: #212529;
+    margin-top: 1%;
 }
 
 .row{
@@ -49,6 +50,12 @@ body{
     font-family: "Calibri";
 }
 
+/*BUTTON*/
+.myBtn{
+    background-color: rgba(255, 255, 255, 0.5);
+    border-color: black;
+}
+
 /*ALARM*/
 .sign {
     text-align: center;
@@ -87,6 +94,12 @@ body{
     .coveringCanvas {
         left: -10px;
     }
+    .myBtnDiv{
+        margin-left: -28%;
+    }
+    #timeChart{
+        margin-left: 20%;
+    }
 }
 /* Small devices (landscape phones, 544px and up) */
 @media (min-width: 544px) {
@@ -102,6 +115,12 @@ body{
     .totalSlagSign{
         margin-left: 57%;
         margin-top: -9.2%;
+    }
+    .myBtnDiv{
+        margin-left: -33%;
+    }
+    #timeChart{
+        margin-left: 20%;
     }
 }
 /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
@@ -119,6 +138,12 @@ body{
         margin-left: 47%;
         margin-top: -6.8%;
     }
+    .myBtnDiv{
+        margin-left: -33%;
+    }
+    #timeChart{
+        margin-left: 6%;
+    }
 }
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
@@ -134,6 +159,9 @@ body{
     .totalSlagSign{
         margin-left: 35%;
         margin-top: -5.2%;
+    }
+    .myBtnDiv{
+        margin-left: -23%;
     }
 }
 /* Extra large devices (large desktops, 1200px and up) */
@@ -151,6 +179,12 @@ body{
         margin-left: 30%;
         margin-top: -4.4%;
     }
+    .myBtnDiv{
+        margin-left: -18%;
+    }
+    #timeChart{
+        margin-left: 5%;
+    }
 }
 @media (min-width: 1400px) {
     .coveredImage {
@@ -165,6 +199,12 @@ body{
     .totalSlagSign{
         margin-left: 15%;
         margin-top: 0%;
+    }
+    .myBtnDiv{
+        margin-left: 0.5%;
+    }
+    #timeChart{
+        margin-left: 5%;
     }
 }
 

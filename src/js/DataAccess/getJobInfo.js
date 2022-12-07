@@ -1,13 +1,28 @@
 import {token} from "./getToken";
 
+// temperature ranges from the areas of interest(aoi)
+function getTempRanges(json){
+
+    let result =[];
+
+    for (let i = 0; i < json.rois.length; i++) {
+        result.push( [Number((json.rois[i].attributes[2].value - 273.15).toFixed(0)), Number((json.rois[i].attributes[3].value - 273.15).toFixed(0))]);
+    }
+
+    return result;
+}
+
+
 // image resolution
 function getImageResolution(json){
 
     return json.visualization.image.resolution;
 }
 
+
 // coordinates for the area of interest(aoi) from job
 function getCoordinates(json) {
+
     let roisCount = json.rois.length;
 
     let result = [];
@@ -29,6 +44,7 @@ function getCoordinates(json) {
 
 // thresholds from job
 function getThresholds(json) {
+
     let thresholdsCount = json.thresholds.length;
 
     let result = [];
@@ -54,7 +70,7 @@ export function getJobInfo(ip, jobID){
 
             console.log(json);
 
-            results = [getThresholds(json), getCoordinates(json), getImageResolution(json)];
+            results = [getThresholds(json), getCoordinates(json), getTempRanges(json), getImageResolution(json)];
         }
     };
 
