@@ -18,11 +18,11 @@ export function handleResults(json){
         if(json.results[i].id === 'AOI_1_Result'){
 
             if( json.results[i].value[0]-273.15 < slagPercentage){
-                alarm.style.backgroundColor = 'rgba( 0, 255, 0, 1)';
+                alarm.style.backgroundColor = 'rgba( 0, 220, 0, 1)';
             }
 
             if( json.results[i].value[0]-273.15 >= slagPercentage ){
-                alarm.style.backgroundColor = 'rgba( 255, 0, 0, 1)';
+                alarm.style.backgroundColor = 'rgba( 200, 0, 0, 1)';
             }
 
             let slag = Number(json.results[i].value[0]-273.15);

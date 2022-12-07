@@ -14,8 +14,8 @@
     <div class="row">
 
         <div class="col-xxl-2">
-            <button id="statusOpen"  class="btn btn-sm btn-light" style="margin-left: 17%; margin-top: 5%" data-bs-toggle="offcanvas" data-bs-target="#deviceInfo" aria-controls="deviceInfo">Status</button>
-            <button id="configBtn"  class="btn btn-sm btn-light" style="margin-top: 5%" data-bs-toggle="offcanvas" data-bs-target="#configure" aria-controls="configure">Configure</button>
+            <button id="statusOpen"  class="btn btn-sm btn-light" style="background-color: rgba(255, 255, 255, 0.5); border-color: black; margin-left: 17%; margin-top: 5%" data-bs-toggle="offcanvas" data-bs-target="#deviceInfo" aria-controls="deviceInfo">Status</button>
+            <button id="configBtn"   class="btn btn-sm btn-light" style="background-color: rgba(255, 255, 255, 0.5); border-color: black; margin-top: 5%" data-bs-toggle="offcanvas" data-bs-target="#configure" aria-controls="configure">Configure</button>
         </div>
 
         <div class="col-xxl-10">
@@ -47,7 +47,7 @@
                 <div class="col-4">
                 </div>
 
-                <div id="alarm" class="col-4 alert sign" role="alert" style="background-color: rgba(0, 255, 0,1)">
+                <div id="alarm" class="col-4 alert sign" role="alert" style="background-color: rgba(0, 220, 0,1)">
                     ALARM
                 </div>
 
@@ -214,7 +214,7 @@
                         <div>
                             <div style="display: flex; justify-content: space-between;">
                                 <p class="text-start">Area Temperature Threshold</p>
-                                <p id="areaTempThresholdDisplay" style="background-color: rgba(255,255,255,0.2); width: 100px">1000 Kelvin</p>
+                                <p id="areaTempThresholdDisplay" style="background-color: rgba(255,255,255,0.2); width: 100px"></p>
                             </div>
                             <input id="areaTempThreshold" type="range" class="form-range" min="0" max="1200" step="1" id="areaTempRange" >
                         </div>
@@ -222,15 +222,15 @@
                         <div>
                             <div style="display: flex; justify-content: space-between;">
                                 <p class="text-start">Slag Temperature Threshold</p>
-                                <p id="slagTempThresholdDisplay" style="background-color: rgba(255,255,255,0.2); width: 100px">1300 Kelvin</p>
+                                <p id="slagTempThresholdDisplay" style="background-color: rgba(255,255,255,0.2); width: 100px"></p>
                             </div>
-                            <input id="slagTempThreshold" type="range" class="form-range" min="0" max="1500" step="1" id="slagTempRange" >
+                            <input id="slagTempThreshold" type="range" class="form-range" min="800" max="1500" step="1" id="slagTempRange" >
                         </div>
 
                         <div>
                             <div style="display: flex; justify-content: space-between;">
                                 <p class="text-start">Slag % Threshold</p>
-                                <p id="slagPercDisplay" style="background-color: rgba(255,255,255,0.2); width: 100px">40 %</p>
+                                <p id="slagPercDisplay" style="background-color: rgba(255,255,255,0.2); width: 100px"></p>
                             </div>
                             <input id="slagPerc" type="range" class="form-range" min="0" max="100" step="1" id="slagThreshold" >
                             <!--ÄNDERN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
@@ -239,7 +239,7 @@
                         <div>
                             <div style="display: flex; justify-content: space-between;">
                                 <p class="text-start" style="white-space: nowrap;">Total Slag % Threshold</p>
-                                <p id="totalSlagPercDisplay" style="background-color: rgba(255,255,255,0.2); white-space: nowrap; width: 100px">2 %</p>
+                                <p id="totalSlagPercDisplay" style="background-color: rgba(255,255,255,0.2); white-space: nowrap; width: 100px"></p>
                             </div>
                             <input id="totalSlagPerc" type="range" class="form-range" min="0" max="5" step="0.5" id="totalSlagThreshold" >
                         </div>

@@ -3,6 +3,8 @@ import {updateChartLines} from "./charts";
 
 let loadStatusInterval;
 
+let areaMaxTemp = 800, targetMaxTemp = 1050;
+
 export let slagPercentage = 40;
 export let totalSlagPercentage = 2;
 
@@ -25,14 +27,40 @@ export function addBtnEvents(user){
 
 
     /*CONFIGURE*/
-    /*Slag Thresholds*/
+
+    /*ELEMENTS*/
+
+    let areaTempThreshold = document.getElementById('areaTempThreshold');
+    let slagTempThreshold = document.getElementById('slagTempThreshold');
+    let areaTempThresholdDisplay = document.getElementById('areaTempThresholdDisplay');
+    let slagTempThresholdDisplay = document.getElementById('slagTempThresholdDisplay');
+
     let slagPerc = document.getElementById('slagPerc');
     let totalSlagPerc = document.getElementById('totalSlagPerc');
     let slagPercDisplay = document.getElementById('slagPercDisplay');
     let totalSlagPercDisplay = document.getElementById('totalSlagPercDisplay');
 
+    areaTempThreshold.value = areaMaxTemp;
+    slagTempThreshold.value = targetMaxTemp;
     slagPerc.value = slagPercentage;
     totalSlagPerc.value = totalSlagPercentage;
+
+    areaTempThresholdDisplay.innerHTML = `${areaMaxTemp} °C`;
+    slagTempThresholdDisplay.innerHTML = `${targetMaxTemp} °C`;
+    slagPercDisplay.innerHTML = `${slagPercentage} %`;
+    totalSlagPercDisplay.innerHTML = `${totalSlagPercentage} %`;
+
+
+    /*EVENTS*/
+
+    areaTempThreshold.addEventListener('input',()=>{
+        areaTempThresholdDisplay.innerHTML = `${areaTempThreshold.value} °C`;
+        areaMaxTemp = Number(areaTempThreshold.value);
+    });
+    slagTempThreshold.addEventListener('input',()=>{
+        slagTempThresholdDisplay.innerHTML = `${slagTempThreshold.value} °C`;
+        targetMaxTemp = Number(slagTempThreshold.value);
+    });
 
     slagPerc.addEventListener('input',()=>{
         slagPercDisplay.innerHTML = `${slagPerc.value} %`;
@@ -44,8 +72,4 @@ export function addBtnEvents(user){
         totalSlagPercentage = Number(totalSlagPerc.value);
         updateChartLines(slagPercentage, totalSlagPercentage);
     });
-
-
-
-
 }
