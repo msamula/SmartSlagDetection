@@ -9,7 +9,7 @@ body{
 
 /*canvas for aoi over image */
 :root{
-    --width: 640px;                                 /*  2*320px     HARD CODED*/
+    --width: 0px;
 }
 
 .outsideWrapper{                                    /*dynamisch!!!*/

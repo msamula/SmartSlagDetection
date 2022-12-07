@@ -11,6 +11,7 @@ import {loadInfo} from "./UserInterface/loadInfo";
 import {addBtnEvents} from "./UserInterface/addEvents";
 import {getData} from "./DataAccess/getData";
 import {createCharts} from "./UserInterface/charts";
+import {resizeImage} from "./UserInterface/resizeImage";
 
 
 //login data
@@ -20,9 +21,6 @@ const clientSecret = 'MnrY2L86pEQr53!6';
 const username = 'administrator';
 const password = 'administrator';
 const jobName = 'SlagDetection';
-
-const sequenzWidth = 320;                   //HARD CODED
-const sequenzHeight = 240;                  //HARD CODED
 
 
 //--- MAIN PART ---
@@ -34,17 +32,18 @@ let user = new User(ipAddress,username,password,clientID,clientSecret);
 getToken(user.ip,user.clientID,user.clientSecret,user.username,user.password);
 
 //get Job Info
-let job = getJobInfo(user.ip, jobName);
+let job = getJobInfo(user.ip, jobName);                                 //job[0] = thresholds      job[1] = coordinates     job[2] = image resolution
 
 window.addEventListener('DOMContentLoaded', () => {
 
     //Userinterface
+    resizeImage( job[2].width, 2);
     addBtnEvents(user);
     loadInfo(user.ip);
     createCharts();
 
     //draw AOI
-    drawAOI(job[1], sequenzWidth, sequenzHeight);
+    drawAOI(job[1], job[2].width, job[2].height);
 
     //get image
     getImage(user);

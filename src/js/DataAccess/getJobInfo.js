@@ -1,5 +1,10 @@
 import {token} from "./getToken";
 
+// image resolution
+function getImageResolution(json){
+
+    return json.visualization.image.resolution;
+}
 
 // coordinates for the area of interest(aoi) from job
 function getCoordinates(json) {
@@ -46,7 +51,10 @@ export function getJobInfo(ip, jobID){
         if(request.readyState === 4 && request.status === 200) {
 
             let json = JSON.parse(request.response);
-            results = [getThresholds(json), getCoordinates(json)];
+
+            console.log(json);
+
+            results = [getThresholds(json), getCoordinates(json), getImageResolution(json)];
         }
     };
 
