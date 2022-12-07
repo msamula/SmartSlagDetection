@@ -84,14 +84,15 @@ export function createCharts(){
     });
 
     timeChart = new Chart( document.getElementById('timeChart') , {
-        type: 'bar',
+        type: 'line',
         data: {
             labels: [''],
             datasets: [{
                 label: 'Slag',
                 data: [],
-                borderWidth: 1,
-                backgroundColor: '#FF0000'
+                fill: true,
+                borderWidth: 0,
+                backgroundColor: '#FF2200'
             }]
         },
         options: {
@@ -107,6 +108,11 @@ export function createCharts(){
                     grid: {
                         display: false
                     }
+                }
+            },
+            elements: {
+                point:{
+                    radius: 0
                 }
             },
             plugins: {
@@ -141,15 +147,13 @@ export function updateCharts(slag, totalSlag){
     /*TIME CHART*/
     let date = new Date();
 
+    //remove data
+    timeChart.data.labels.shift();
+    timeChart.data.datasets[0].data.shift();
+
     //add data
     timeChart.data.labels.push(`${(date.getMinutes()<10?'0':'') + date.getMinutes()}:${(date.getSeconds()<10?'0':'') + date.getSeconds()}`);
     timeChart.data.datasets[0].data.push(slag);
-
-    //remove data
-    if(timeChart.data.labels.length > 100){
-        timeChart.data.labels.shift();
-        timeChart.data.datasets[0].data.shift();
-    }
 
     slagChart.update();
     timeChart.update();
