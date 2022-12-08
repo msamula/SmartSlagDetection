@@ -85,6 +85,15 @@ body{
     border-radius: 5px;
 }
 
+.update{
+    max-height: 30px;
+    z-index: 1;
+    position: absolute;
+    left: 40%;
+    top: 2%;
+    display: none !important;
+}
+
 /*MEDIA QUERIES*/
 /*media queries for different display resolutions*/
 @media (min-width: 0px) {

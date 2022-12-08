@@ -80,6 +80,13 @@ export function addBtnEvents(user, jobName, jobTempRanges){
     /*BUTTON*/
 
     document.getElementById('updateJobBtn').addEventListener('click', ()=>{
+
         createJob(user.ip, jobName, areaMaxTemp, targetMaxTemp);
+
+        document.getElementById('configureClose').click();
+        document.getElementById('dataUpdated').setAttribute('style', 'display:flex !important');
+        setTimeout(()=>{
+            document.getElementById('dataUpdated').setAttribute('style', 'display:none !important');
+        }, 1800);
     });
 }
