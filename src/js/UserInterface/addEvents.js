@@ -83,6 +83,25 @@ export function addBtnEvents(user, jobName, jobTempRanges){
 
         createJob(user.ip, jobName, areaMaxTemp, targetMaxTemp);
 
+
+        /*USERINTERFACE*/
+
+        let vessel = document.getElementById('vessel');
+        let vesselInput = document.getElementById('vesselInput');
+        let heat = document.getElementById('heat');
+        let heatInput = document.getElementById('heatInput');
+
+        vessel.innerHTML = `BOF Vessel: ${vesselInput.value}`;
+        vesselInput.placeholder = vesselInput.value;
+        vesselInput.value = '';
+
+        heat.innerHTML = `Heat #: ${heatInput.value}`;
+        heatInput.placeholder = heatInput.value;
+        heatInput.value = '';
+
+
+        /*BUTTONEVENTS*/
+
         document.getElementById('configureClose').click();
         document.getElementById('dataUpdated').setAttribute('style', 'display:flex !important');
         setTimeout(()=>{
