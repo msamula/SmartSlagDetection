@@ -1,5 +1,7 @@
 import {token} from "./getToken";
 
+export let job;
+
 // temperature ranges from the areas of interest(aoi)
 function getTempRanges(json){
 
@@ -66,11 +68,9 @@ export function getJobInfo(ip, jobID){
     request.onreadystatechange = function() {
         if(request.readyState === 4 && request.status === 200) {
 
-            let json = JSON.parse(request.response);
+            job = JSON.parse(request.response);
 
-            console.log(json);
-
-            results = [getThresholds(json), getCoordinates(json), getTempRanges(json), getImageResolution(json)];
+            results = [getThresholds(job), getCoordinates(job), getTempRanges(job), getImageResolution(job)];
         }
     };
 

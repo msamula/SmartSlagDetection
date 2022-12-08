@@ -38,11 +38,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     //Userinterface
     resizeImage(job[3].width, 2);
-    addBtnEvents(user, job[2]);
+    addBtnEvents(user, jobName, job[2]);
     loadInfo(user.ip);
     createCharts();
-
-    //draw AOI
     drawAOI(job[1], job[3].width, job[3].height);
 
     //get image

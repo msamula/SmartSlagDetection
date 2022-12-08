@@ -1,5 +1,6 @@
 import {loadStatus} from "./loadStatus";
 import {updateChartLines} from "./charts";
+import {createJob} from "../DataHandler/createJob";
 
 let loadStatusInterval;
 
@@ -8,7 +9,7 @@ let areaMaxTemp, targetMaxTemp;
 export let slagPercentage = 40;
 export let totalSlagPercentage = 2;
 
-export function addBtnEvents(user, jobTempRanges){
+export function addBtnEvents(user, jobName, jobTempRanges){
 
     /*STATUS*/
     /*Open Status Button*/
@@ -74,5 +75,11 @@ export function addBtnEvents(user, jobTempRanges){
         totalSlagPercDisplay.innerHTML = `${totalSlagPerc.value} %`;
         totalSlagPercentage = Number(totalSlagPerc.value);
         updateChartLines(slagPercentage, totalSlagPercentage);
+    });
+
+    /*BUTTON*/
+
+    document.getElementById('updateJobBtn').addEventListener('click', ()=>{
+        createJob(user.ip, jobName, areaMaxTemp, targetMaxTemp);
     });
 }
