@@ -88,6 +88,7 @@ body{
 .update{
     max-height: 30px;
     z-index: 1;
+    opacity: 45%;
     position: absolute;
     left: 40%;
     top: 2%;

@@ -17,16 +17,16 @@ export async function getResults(ip) {
             'Authorization': `Bearer ${token.accessToken}`
         }
     })
-        .then((response) => response.json())
-        .then((json) => {
+    .then((response) => response.json())
+    .then((json) => {
 
-            handleResults(json);
+        handleResults(json);
 
-            //start new request after the previous one is done
-            getResults(ip);
+        //start new request after the previous one is done
+        getResults(ip);
 
-        })
-        .catch(()=>{
-            getResults(ip);
-        })
+    })
+    .catch(()=>{
+        getResults(ip);
+    })
 }

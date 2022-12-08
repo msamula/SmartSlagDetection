@@ -15,6 +15,9 @@ export async function getImage(user)
             'Authorization': `Bearer ${token.accessToken}`
         }
     })
+    .catch(()=>{
+        getImage(user);
+    })
 
     if (response.status === 200) {
         let blob = await response.blob();
