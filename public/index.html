@@ -202,18 +202,15 @@
 
     <!--Configure-->
 
-    <div class="offcanvas offcanvas-start text-bg-dark" data-bs-scroll="true" tabindex="-1" id="configure" aria-labelledby="configureTitle" style="--bs-offcanvas-width: 90%; opacity: 90%;">
+    <div class="offcanvas offcanvas-start text-bg-dark" data-bs-scroll="true" tabindex="-1" id="configure" aria-labelledby="configureTitle" style="--bs-offcanvas-width: 90%; ">
 
         <div class="offcanvas-header">
             <h2 class="offcanvas-title" id="configureTitle" style="margin-left: 45%">Configure</h2>
             <button id="configureClose" type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
 
-        <div class="offcanvas-body text-start text">
+        <div class="offcanvas-body text-start text" style="overflow-x: hidden;">
             <div class="container text-center">
-
-                <button id="updateJobBtn" class="btn btn-sm btn-danger" style="min-width: 20%">Update Job</button>
-
                 <div class="row">
                     <div class="col-xxl-4">
                         <div class="input-group input-group-sm mb-3">
@@ -224,10 +221,17 @@
                         </div>
                     </div>
 
-                    <div class="col-xxl-8">
+                    <div class="col-xxl-4">
+
+                    </div>
+
+                    <div class="col-xxl-4">
+                        <button id="updateJobBtn" class="btn btn-sm btn-danger" style="min-width: 100%">Update Job</button>
                     </div>
 
                 </div>
+
+                <hr>
 
                 <div class="row">
                     <div class="col-xxl-4">
