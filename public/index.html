@@ -212,6 +212,8 @@
         <div class="offcanvas-body text-start text">
             <div class="container text-center">
 
+                <button id="updateJobBtn" class="btn btn-sm btn-danger" style="min-width: 20%">Update Job</button>
+
                 <div class="row">
                     <div class="col-xxl-4">
                         <div class="input-group input-group-sm mb-3">
@@ -222,7 +224,9 @@
                         </div>
                     </div>
 
-                    <div class="col-xxl-8"></div>
+                    <div class="col-xxl-8">
+                    </div>
+
                 </div>
 
                 <div class="row">
@@ -252,7 +256,6 @@
                                 <p id="slagPercDisplay" style="background-color: rgba(255,255,255,0.2); width: 100px"></p>
                             </div>
                             <input id="slagPerc" type="range" class="form-range" min="0" max="100" step="1" id="slagThreshold" >
-                            <!--ÄNDERN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
                         </div>
 
                         <div>
@@ -264,10 +267,44 @@
                         </div>
                     </div>
 
-                </div>
+                    <div class="col-xxl-8">
 
-                <div class="row" style="margin-top: 15%">
-                    <button id="updateJobBtn" class="btn btn-sm btn-danger" style="max-width: 20%; margin-left: 40%">Update Job</button>
+                        <h5 style="margin-left: 6.5%; margin-bottom: 5%">AOI</h5>
+
+                        <div class="row">
+                            <div class="drawAOI">
+                                <div class="outsideWrapper">
+                                    <div class="insideWrapper">
+
+                                        <svg id="drawAoiSvg" class="rounded coveredImage" style='background: transparent; display: none'>
+                                            <rect   id="rect" stroke='rgba(61, 168, 245, 1)' fill='rgba(61, 168, 245, 0.5)'/>
+                                            <circle id="bluePoint" fill='blue' r='5'/>
+                                            <circle id="redPoint"  fill='red' r='5' />
+                                        </svg>
+
+                                        <canvas id="drawAOICanvas" class="rounded coveringCanvas"   style="opacity: 60%"></canvas>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="btn-group text-center" role="group" style="max-width: 500px; margin-top: 1%">
+
+                            <button id="refreshImage" class="btn btn-sm btn-light myBtn"    title="refresh Image">
+                                <img src="./media/refresh_30.png" style="max-height: 20px;"> refresh Image
+                            </button>
+
+                            <button id="drawAOIBtn"   class="btn btn-sm btn-light myBtn"  title="draw Rectangle" style="min-width: 150px">
+                                <img src="./media/rect_30.png" style="max-height: 20px;"> draw Rectangle
+                            </button>
+
+                            <button id="saveAOIBtn"   class="btn btn-sm btn-light myBtn"   title="save AOI">
+                                <img src="./media/save_30.png" style="max-height: 20px;"> save AOI
+                            </button>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

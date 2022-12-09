@@ -1,6 +1,9 @@
 import {loadStatus} from "./loadStatus";
 import {updateChartLines} from "./charts";
 import {createJob} from "../DataHandler/createJob";
+import {refreshImage} from "./configure";
+import {drawPoints, getCanvasInfo, mouseDown, removeMousedown} from "./drawRect";
+import {drawAOI} from "./drawAOI";
 
 let loadStatusInterval;
 
@@ -9,9 +12,18 @@ let areaMaxTemp, targetMaxTemp;
 export let slagPercentage = 40;
 export let totalSlagPercentage = 2;
 
-export function addBtnEvents(user, jobName, jobTempRanges){
+export function addBtnEvents(user, jobName, jobTempRanges, imageResolution, factor){
 
-    /*STATUS*/
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*MAINWINDOW*/
+
+    document.getElementById('configBtn').addEventListener('click', ()=>{
+        refreshImage(imageResolution);
+    });
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*STATUS*/
+
     /*Open Status Button*/
     document.getElementById('statusOpen').addEventListener('click', ()=>{
         loadStatus(user.ip);
@@ -27,7 +39,8 @@ export function addBtnEvents(user, jobName, jobTempRanges){
     });
 
 
-    /*CONFIGURE*/
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*CONFIGURE*/
 
     /*ELEMENTS*/
 
@@ -77,11 +90,34 @@ export function addBtnEvents(user, jobName, jobTempRanges){
         updateChartLines(slagPercentage, totalSlagPercentage);
     });
 
-    /*BUTTON*/
+    /*AOI*/
+
+    document.getElementById('refreshImage').addEventListener('click', ()=>{
+        refreshImage(imageResolution);
+    });
+
+    let drawAoiBtn = document.getElementById('drawAOIBtn');
+
+    drawAoiBtn.addEventListener('click', ()=> {
+        drawAoiBtn.disabled = true;
+        getCanvasInfo(imageResolution, factor);
+        document.getElementById('drawAoiSvg').style.display = 'initial';
+        document.getElementById('drawAOICanvas').addEventListener('mousedown', mouseDown)
+    });
+
+    document.getElementById('saveAOIBtn').addEventListener('click',()=>{
+        drawAoiBtn.innerHTML = '<img src="./media/rect_30.png" style="max-height: 20px;"> redraw Rectangle';
+        drawAoiBtn.disabled = false;
+        removeMousedown();
+    });
+
+
+    /*UPDATE JOB BUTTON*/
 
     document.getElementById('updateJobBtn').addEventListener('click', ()=>{
 
         createJob(user.ip, jobName, areaMaxTemp, targetMaxTemp);
+        drawAOI( drawPoints, imageResolution.width, imageResolution.height);
 
 
         /*USERINTERFACE*/

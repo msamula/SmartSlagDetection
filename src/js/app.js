@@ -22,6 +22,7 @@ const username = 'administrator';
 const password = 'administrator';
 const jobName = 'SlagDetection';
 
+const resizeFactor = 2;                     //resize the camera image by factor
 
 //--- MAIN PART ---
 
@@ -37,8 +38,8 @@ let job = getJobInfo(user.ip, jobName);                                 //job[0]
 window.addEventListener('DOMContentLoaded', () => {
 
     //Userinterface
-    resizeImage(job[3].width, 2);
-    addBtnEvents(user, jobName, job[2]);
+    resizeImage(job[3].width, resizeFactor);
+    addBtnEvents(user, jobName, job[2], job[3], resizeFactor);
     loadInfo(user.ip);
     createCharts();
     drawAOI(job[1], job[3].width, job[3].height);

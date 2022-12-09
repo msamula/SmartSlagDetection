@@ -1,5 +1,6 @@
 import{job} from "../DataAccess/getJobInfo";
 import {token} from "../DataAccess/getToken";
+import {coordinates} from "../UserInterface/drawRect";
 
 function uploadJob(ip, job){
     fetch(`http://${ip}/api/jobs`, {
@@ -26,6 +27,9 @@ function activateJob(ip, jobName){
 
 export function createJob(ip, jobName, areaMaxTemp, targetMaxTemp){
     let changedJob = job;
+
+    changedJob.rois[0].points = coordinates;
+    changedJob.rois[1].points = coordinates;
 
     changedJob.rois[0].attributes[1].value = `{"emissivity":{"enabled":true,"value":0.92},"evaluationRange":{"enabled":true,"max":1973.15,"min":${areaMaxTemp + 273.15}}}`;
     changedJob.rois[0].attributes[2].value = `${areaMaxTemp + 273.15}`;

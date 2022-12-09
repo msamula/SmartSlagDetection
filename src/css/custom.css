@@ -216,5 +216,8 @@ body{
     #timeChart{
         margin-left: 5%;
     }
+    .drawAOI{
+        margin-left: 10%;
+    }
 }
 
