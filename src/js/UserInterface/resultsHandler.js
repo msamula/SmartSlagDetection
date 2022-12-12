@@ -1,7 +1,3 @@
-/*HARD CODED AOI_0_Result (steel)       json.results[1].value[0]-273.15*/
-/*HARD CODED AOI_1_Result (slag)        json.results[2].value[0]-273.15*/
-/*HARD CODED Tap Temp (max Temp in aoi) json.results[5].value[0]-273.15*/
-
 import {updateCharts} from "./charts";
 import {slagPercentage} from "./addEvents";
 
@@ -11,9 +7,13 @@ export function handleResults(json){
 
     for (let i = 0; i < json.results.length; i++) {
 
+        // max Temp
+
         if(json.results[i].id === 'MaxTemp'){
             document.getElementById('tapTemp').innerHTML = `Tap Temperature: ${(json.results[i].value[0]-273.15).toFixed(1)}°C`;
         }
+
+        // slag percentage
 
         if(json.results[i].id === 'AOI_1_Result'){
 

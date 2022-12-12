@@ -1,12 +1,11 @@
 import {checkToken, token} from "./getToken";
+import {cameraImage} from "../UserInterface/loadHtmlElements";
 
 
 //get the camera image
 
 export async function getImage(user)
 {
-    let image = document.getElementById('img');
-
     await checkToken(user);
 
     let response = await fetch(`http://${user.ip}/api/images/live`, {
@@ -21,10 +20,10 @@ export async function getImage(user)
 
     if (response.status === 200) {
         let blob = await response.blob();
-        image.src = URL.createObjectURL(blob);
+        cameraImage.src = URL.createObjectURL(blob);
 
-        image.onload = () => {
-            URL.revokeObjectURL(image.src);
+        cameraImage.onload = () => {
+            URL.revokeObjectURL(cameraImage.src);
         }
 
         //start new request after the previous one is done

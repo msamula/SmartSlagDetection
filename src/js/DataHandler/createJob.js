@@ -1,4 +1,4 @@
-import{job} from "../DataAccess/getJobInfo";
+import{completeJob} from "../DataAccess/getJobInfo";
 import {token} from "../DataAccess/getToken";
 import {coordinates} from "../UserInterface/drawRect";
 
@@ -26,7 +26,7 @@ function activateJob(ip, jobName){
 }
 
 export function createJob(ip, jobName, areaMaxTemp, targetMaxTemp){
-    let changedJob = job;
+    let changedJob = completeJob;
 
     changedJob.rois[0].points = coordinates;
     changedJob.rois[1].points = coordinates;

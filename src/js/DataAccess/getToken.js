@@ -1,13 +1,13 @@
 import {Token} from "../DataHandler/models";
 
-//TOKEN used by other functions
-export let token;
+//TOKEN and token-expire-time used by other functions
+export let token, expireTime;
 
 
 //get token function
-export function getToken(ip,cliId,cliSecret,user,password)
+export function getToken(user)
 {
-    let url = `http://${ip}/api/oauth/token?client_id=${cliId}&client_secret=${cliSecret}&grant_type=password&username=${user}&password=${password}`;
+    let url = `http://${user.ip}/api/oauth/token?client_id=${user.clientID}&client_secret=${user.clientSecret}&grant_type=password&username=${user.username}&password=${user.password}`;
 
     let xmlHttp = new XMLHttpRequest();
 
@@ -26,8 +26,8 @@ export function getToken(ip,cliId,cliSecret,user,password)
 }
 
 //Refresh token function
-export async function refreshToken(ip,cliId,cliSecret,refreshToken){
-    let url = `http://${ip}/api/oauth/token?client_id=${cliId}&client_secret=${cliSecret}&grant_type=refresh_token&refresh_token=${refreshToken}`;
+async function refreshToken(user,refreshToken){
+    let url = `http://${user.ip}/api/oauth/token?client_id=${user.clientID}&client_secret=${user.clientSecret}&grant_type=refresh_token&refresh_token=${refreshToken}`;
 
     let response =await fetch(url,{
         method: 'POST',
@@ -43,13 +43,11 @@ export async function refreshToken(ip,cliId,cliSecret,refreshToken){
 
 
 //check if token is expired
-export let expireTime;
-let now;
 export async function checkToken(user){
-    now = new Date();
-    expireTime = (token.exp*1000 - now)/1000;
+    let dateNow = new Date();
+    expireTime = (token.exp*1000 - dateNow)/1000;
 
     if(expireTime <= 60){
-        await refreshToken(user.ip, user.clientID, user.clientSecret, token.refreshToken);
+        await refreshToken(user, token.refreshToken);
     }
 }

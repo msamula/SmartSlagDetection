@@ -5,8 +5,6 @@ import {refreshImage} from "./configure";
 import {drawPoints, getCanvasInfo, mouseDown, removeMousedown} from "./drawRect";
 import {drawAOI} from "./drawAOI";
 
-let loadStatusInterval;
-
 let areaMaxTemp, targetMaxTemp;
 
 export let slagPercentage = 40;
@@ -23,6 +21,8 @@ export function addBtnEvents(user, jobName, jobTempRanges, imageResolution, fact
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*STATUS*/
+
+    let loadStatusInterval;
 
     /*Open Status Button*/
     document.getElementById('statusOpen').addEventListener('click', ()=>{
