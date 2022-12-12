@@ -4,8 +4,8 @@ let width, height, factor;
 let start = {};
 
 //coordinates for AOI
-export let coordinates = [{x: 0, y: 0},{ x: 0, y: 0}, {x: 0, y: 0}, { x: 0, y: 0}];
-export let drawPoints = [['RectLine',[0, 0],[0, 0], [0, 0], [0, 0]]];
+export let coordinates = [{x: 137, y: 32},{ x: 267, y: 32}, {x: 267, y: 167}, { x: 137, y: 167}];
+export let drawPoints = [['RectLine',[137, 32],[267, 32], [267, 167], [137, 167]]];
 
 //
 export function getCanvasInfo(imageResolution, resizeFactor){

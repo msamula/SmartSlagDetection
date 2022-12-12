@@ -1,26 +1,18 @@
 import {loadStatus} from "./loadStatus";
 import {updateChartLines} from "./charts";
 import {createJob} from "../DataHandler/createJob";
-import {refreshImage} from "./configure";
+import {refreshImage} from "./refreshImage";
 import {drawPoints, getCanvasInfo, mouseDown, removeMousedown} from "./drawRect";
 import {drawAOI} from "./drawAOI";
 
-let areaMaxTemp, targetMaxTemp;
 
 export let slagPercentage = 40;
 export let totalSlagPercentage = 2;
 
 export function addBtnEvents(user, jobName, jobTempRanges, imageResolution, factor){
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*MAINWINDOW*/
 
-    document.getElementById('configBtn').addEventListener('click', ()=>{
-        refreshImage(imageResolution);
-    });
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*STATUS*/
+    /*STATUS*///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     let loadStatusInterval;
 
@@ -39,8 +31,12 @@ export function addBtnEvents(user, jobName, jobTempRanges, imageResolution, fact
     });
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*CONFIGURE*/
+
+    /*CONFIGURE*////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    document.getElementById('configBtn').addEventListener('click', ()=>{
+        refreshImage(imageResolution);
+    });
 
     /*ELEMENTS*/
 
@@ -54,8 +50,8 @@ export function addBtnEvents(user, jobName, jobTempRanges, imageResolution, fact
     let slagPercDisplay = document.getElementById('slagPercDisplay');
     let totalSlagPercDisplay = document.getElementById('totalSlagPercDisplay');
 
-    areaMaxTemp = jobTempRanges[0][0];
-    targetMaxTemp = jobTempRanges[1][0];
+    let areaMaxTemp = jobTempRanges[0][0];
+    let targetMaxTemp = jobTempRanges[1][0];
 
     areaTempThreshold.value = areaMaxTemp;
     slagTempThreshold.value = targetMaxTemp;
@@ -90,7 +86,7 @@ export function addBtnEvents(user, jobName, jobTempRanges, imageResolution, fact
         updateChartLines(slagPercentage, totalSlagPercentage);
     });
 
-    /*AOI*/
+    /*AOI*//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     document.getElementById('refreshImage').addEventListener('click', ()=>{
         refreshImage(imageResolution);

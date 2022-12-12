@@ -1,3 +1,5 @@
+// load once all repetitive html elements for getImage.js and resultsViewer.js
+
 export let cameraImage, alarm, tapTemp, slagDisplay, totalSlagDisplay;
 
 export function loadHtmlElements(){

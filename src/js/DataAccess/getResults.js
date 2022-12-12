@@ -1,5 +1,5 @@
 import {expireTime, token} from "./getToken";
-import {handleResults} from "../UserInterface/resultsHandler";
+import {handleResults} from "../UserInterface/resultsViewer";
 
 function awaitNewToken(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));

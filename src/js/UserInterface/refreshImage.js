@@ -4,7 +4,7 @@ export function refreshImage(imageResolution) {
     let canvas = document.getElementById('drawAOICanvas');
     canvas.width= imageResolution.width;
     canvas.height= imageResolution.height;
-    let ctx = canvas.getContext('2d');
+    let ctx = canvas.getContext('2d', { willReadFrequently: true });
     ctx.drawImage(image, 1, 1);
 
 
