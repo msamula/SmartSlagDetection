@@ -26,11 +26,12 @@ export function handleResults(json){
             }
 
             let slag = Number(json.results[i].value[0]-273.15);
+            let totalSlag = 0;
 
-            updateCharts( slag.toFixed(0), slag.toFixed(0));
+            updateCharts( slag.toFixed(0), totalSlag);
 
             document.getElementById('slag').innerHTML = `${slag.toFixed(1)}%`;
-            document.getElementById('totalSlag').innerHTML = `${slag.toFixed(1)}%`;
+            document.getElementById('totalSlag').innerHTML = `${totalSlag}%`;
         }
     }
 }

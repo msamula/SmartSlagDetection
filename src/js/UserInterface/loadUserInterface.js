@@ -1,10 +1,11 @@
 import {resizeImage} from "./Helper/resizeImage";
 import {addBtnEvents} from "./addEvents";
-import {loadInfo} from "./loadInfo";
+import {loadInfo} from "./Helper/loadInfo";
 import {createCharts} from "./charts";
 import {drawAOI} from "./drawAOI";
-import {loadHtmlElements} from "./loadHtmlElements";
+import {loadHtmlElements} from "./Helper/loadHtmlElements";
 
+//specialJobInfo[0] = thresholds       specialJobInfo[1] = coordinates      specialJobInfo[2] = aoi temperature ranges     specialJobInfo[3] = cameraImage resolution
 
 export function loadUserInterface(user, jobName, specialJobInfo, resizeFactor){
     loadHtmlElements();

@@ -7,11 +7,13 @@ export function refreshImage(imageResolution) {
     let ctx = canvas.getContext('2d');
     ctx.drawImage(image, 1, 1);
 
+
+    //check if image is loaded. if not load again.
     let canvasData = ctx.getImageData(0, 0, imageResolution.width, imageResolution.height);
 
     if(canvasData.data[70000] === 0){
         setTimeout(()=>{
             refreshImage(imageResolution);
-        },100);
+        },50);
     }
 }

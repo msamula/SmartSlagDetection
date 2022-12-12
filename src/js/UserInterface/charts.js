@@ -155,7 +155,7 @@ export function updateCharts(slag, totalSlag){
     timeChart.data.labels.push(`${(date.getMinutes()<10?'0':'') + date.getMinutes()}:${(date.getSeconds()<10?'0':'') + date.getSeconds()}`);
     timeChart.data.datasets[0].data.push(slag);
 
-    slagChart.update();
+    slagChart.update();   //'none' --> nicht animiert
     timeChart.update();
 }
 
