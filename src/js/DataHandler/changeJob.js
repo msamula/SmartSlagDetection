@@ -25,7 +25,7 @@ function activateJob(ip, jobName){
     });
 }
 
-export function createJob(ip, jobName, areaMaxTemp, targetMaxTemp){
+export function changeJob(ip, jobName, areaMaxTemp, targetMaxTemp){
     let changedJob = completeJob;
 
     changedJob.rois[0].points = coordinates;

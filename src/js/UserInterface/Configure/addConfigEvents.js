@@ -1,7 +1,7 @@
 import {refreshImage} from "./refreshImage";
 import {updateChartLines} from "../Main/charts";
 import {drawPoints, getCanvasInfo, mouseDown, removeMousedown} from "./drawRect";
-import {createJob} from "../../DataHandler/createJob";
+import {changeJob} from "../../DataHandler/changeJob";
 import {drawAOI} from "../Main/drawAOI";
 
 export let slagPercentage = 40;
@@ -87,7 +87,7 @@ export function addConfigEvents(user, jobName, jobTempRanges, imageResolution, f
 
     document.getElementById('updateJobBtn').addEventListener('click', ()=>{
 
-        createJob(user.ip, jobName, areaMaxTemp, targetMaxTemp);
+        changeJob(user.ip, jobName, areaMaxTemp, targetMaxTemp);
         drawAOI( drawPoints, imageResolution.width, imageResolution.height);
 
 
