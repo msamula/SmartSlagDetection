@@ -1,38 +1,13 @@
-import {loadStatus} from "../Status/loadStatus";
-import {updateChartLines} from "./charts";
+import {refreshImage} from "./refreshImage";
+import {updateChartLines} from "../Main/charts";
+import {drawPoints, getCanvasInfo, mouseDown, removeMousedown} from "./drawRect";
 import {createJob} from "../../DataHandler/createJob";
-import {refreshImage} from "../Configure/refreshImage";
-import {drawPoints, getCanvasInfo, mouseDown, removeMousedown} from "../Configure/drawRect";
-import {drawAOI} from "./drawAOI";
-
+import {drawAOI} from "../Main/drawAOI";
 
 export let slagPercentage = 40;
 export let totalSlagPercentage = 2;
 
-export function addBtnEvents(user, jobName, jobTempRanges, imageResolution, factor){
-
-
-    /*STATUS*///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    let loadStatusInterval;
-
-    /*Open Status Button*/
-    document.getElementById('statusOpen').addEventListener('click', ()=>{
-        loadStatus(user.ip);
-
-        loadStatusInterval = setInterval(()=>{
-            loadStatus(user.ip);
-        },1000);
-    });
-
-    /*Close Status Button*/
-    document.getElementById('statusClose').addEventListener('click', ()=>{
-        clearInterval(loadStatusInterval);
-    });
-
-
-
-    /*CONFIGURE*////////////////////////////////////////////////////////////////////////////////////////////////////////
+export function addConfigEvents(user, jobName, jobTempRanges, imageResolution, factor){
 
     document.getElementById('configBtn').addEventListener('click', ()=>{
         refreshImage(imageResolution);

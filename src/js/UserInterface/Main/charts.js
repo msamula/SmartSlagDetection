@@ -1,6 +1,6 @@
 import Chart from 'chart.js/auto';
 import annotationPlugin from 'chartjs-plugin-annotation';
-import {slagPercentage, totalSlagPercentage} from "./addEvents";
+import {slagPercentage, totalSlagPercentage} from "../Configure/addConfigEvents";
 
 let slagChart, timeChart;
 
