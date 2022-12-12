@@ -1,16 +1,15 @@
 import {updateCharts} from "./charts";
 import {slagPercentage} from "./addEvents";
+import {alarm, slagDisplay, tapTemp, totalSlagDisplay} from "./Helper/loadHtmlElements";
 
 export function handleResults(json){
-
-    let alarm = document.getElementById('alarm');
 
     for (let i = 0; i < json.results.length; i++) {
 
         // max Temp
 
         if(json.results[i].id === 'MaxTemp'){
-            document.getElementById('tapTemp').innerHTML = `Tap Temperature: ${(json.results[i].value[0]-273.15).toFixed(1)}°C`;
+            tapTemp.innerHTML = `Tap Temperature: ${(json.results[i].value[0]-273.15).toFixed(1)}°C`;
         }
 
         // slag percentage
@@ -30,8 +29,8 @@ export function handleResults(json){
 
             updateCharts( slag.toFixed(0), totalSlag);
 
-            document.getElementById('slag').innerHTML = `${slag.toFixed(1)}%`;
-            document.getElementById('totalSlag').innerHTML = `${totalSlag}%`;
+            slagDisplay.innerHTML = `${slag.toFixed(1)}%`;
+            totalSlagDisplay.getElementById('totalSlag').innerHTML = `${totalSlag}%`;
         }
     }
 }
