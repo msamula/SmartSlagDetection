@@ -30,7 +30,7 @@ export function handleResults(json){
             updateCharts( slag.toFixed(0), totalSlag);
 
             slagDisplay.innerHTML = `${slag.toFixed(1)}%`;
-            totalSlagDisplay.getElementById('totalSlag').innerHTML = `${totalSlag}%`;
+            totalSlagDisplay.innerHTML = `${totalSlag}%`;
         }
     }
 }
