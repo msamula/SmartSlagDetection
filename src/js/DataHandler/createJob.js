@@ -1,6 +1,6 @@
 import{completeJob} from "../DataAccess/getJobInfo";
 import {token} from "../DataAccess/getToken";
-import {coordinates} from "../UserInterface/drawRect";
+import {coordinates} from "../UserInterface/Configure/drawRect";
 
 function uploadJob(ip, job){
     fetch(`http://${ip}/api/jobs`, {

@@ -1,6 +1,6 @@
-import {updateCharts} from "./charts";
-import {slagPercentage} from "./addEvents";
-import {alarm, slagDisplay, tapTemp, totalSlagDisplay} from "./loadHtmlElements";
+import {updateCharts} from "./Main/charts";
+import {slagPercentage} from "./Main/addEvents";
+import {alarm, slagDisplay, tapTemp, totalSlagDisplay} from "./Main/loadHtmlElements";
 
 export function handleResults(json){
 

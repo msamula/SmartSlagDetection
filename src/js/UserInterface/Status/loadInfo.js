@@ -1,4 +1,4 @@
-import {token} from "../DataAccess/getToken";
+import {token} from "../../DataAccess/getToken";
 
 export function loadInfo(ip){
 

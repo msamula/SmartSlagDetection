@@ -1,8 +1,8 @@
-import {loadStatus} from "./loadStatus";
+import {loadStatus} from "../Status/loadStatus";
 import {updateChartLines} from "./charts";
-import {createJob} from "../DataHandler/createJob";
-import {refreshImage} from "./refreshImage";
-import {drawPoints, getCanvasInfo, mouseDown, removeMousedown} from "./drawRect";
+import {createJob} from "../../DataHandler/createJob";
+import {refreshImage} from "../Configure/refreshImage";
+import {drawPoints, getCanvasInfo, mouseDown, removeMousedown} from "../Configure/drawRect";
 import {drawAOI} from "./drawAOI";
 
 

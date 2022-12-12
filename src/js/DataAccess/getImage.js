@@ -1,5 +1,5 @@
 import {checkToken, token} from "./getToken";
-import {cameraImage} from "../UserInterface/loadHtmlElements";
+import {cameraImage} from "../UserInterface/Main/loadHtmlElements";
 
 
 //get the camera image

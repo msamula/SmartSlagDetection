@@ -1,9 +1,9 @@
-import {resizeImage} from "./resizeImage";
-import {addBtnEvents} from "./addEvents";
-import {loadInfo} from "./loadInfo";
-import {createCharts} from "./charts";
-import {drawAOI} from "./drawAOI";
-import {loadHtmlElements} from "./loadHtmlElements";
+import {resizeImage} from "./Main/resizeImage";
+import {addBtnEvents} from "./Main/addEvents";
+import {loadInfo} from "./Status/loadInfo";
+import {createCharts} from "./Main/charts";
+import {drawAOI} from "./Main/drawAOI";
+import {loadHtmlElements} from "./Main/loadHtmlElements";
 
 //specialJobInfo[0] = thresholds       specialJobInfo[1] = coordinates      specialJobInfo[2] = aoi temperature ranges     specialJobInfo[3] = cameraImage resolution
 
