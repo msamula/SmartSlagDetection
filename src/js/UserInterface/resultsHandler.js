@@ -11,7 +11,7 @@ export function handleResults(json){
 
     for (let i = 0; i < json.results.length; i++) {
 
-        if(json.results[i].id === 'TapTemp'){
+        if(json.results[i].id === 'MaxTemp'){
             document.getElementById('tapTemp').innerHTML = `Tap Temperature: ${(json.results[i].value[0]-273.15).toFixed(1)}°C`;
         }
 

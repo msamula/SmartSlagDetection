@@ -1,0 +1,532 @@
+{
+  "exportDate": "2022-12-05T09:23:09.642Z",
+  "exporterVersion": 1,
+  "jobs": [
+    {
+      "info": {
+        "id": "SlagDetection",
+        "description": "",
+        "creationDate": "2022-12-02T08:35:56.597Z",
+        "lastModifiedDate": "2022-12-05T09:18:49.463Z",
+        "revision": {
+          "major": 1,
+          "minor": 4
+        }
+      },
+      "objectParameter": {
+        "emissivity": 1,
+        "transmission": 1,
+        "externalWindow": {
+          "installed": false,
+          "temperature": 0,
+          "transmission": 1
+        }
+      },
+      "triggerMode": "internal",
+      "shutterMode": "auto",
+      "temperatureRange": {
+        "id": "Range2",
+        "label": "Range2",
+        "min": 233.14999389648438,
+        "max": 823.1500244140625
+      },
+      "rois": [
+        {
+          "id": "AOI_0",
+          "aoiType": "Rect",
+          "label": "AOI_0",
+          "points": [
+            {
+              "x": 137,
+              "y": 32
+            },
+            {
+              "x": 267,
+              "y": 32
+            },
+            {
+              "x": 267,
+              "y": 167
+            },
+            {
+              "x": 137,
+              "y": 167
+            }
+          ],
+          "attributes": [
+            {
+              "key": "_label_",
+              "value": "{\"x\":136.36252900232017,\"y\":31.78447667897766}"
+            },
+            {
+              "key": "__META__",
+              "value": "{\"emissivity\":{\"enabled\":true,\"value\":0.92},\"evaluationRange\":{\"enabled\":true,\"max\":1973.15,\"min\":1023.15}}"
+            },
+            {
+              "key": "evalRangeStart",
+              "value": "1023.15"
+            },
+            {
+              "key": "evalRangeEnd",
+              "value": "1973.15"
+            },
+            {
+              "key": "emissivity",
+              "value": "0.92"
+            }
+          ]
+        },
+        {
+          "id": "AOI_1",
+          "aoiType": "Rect",
+          "label": "AOI_1",
+          "points": [
+            {
+              "x": 137,
+              "y": 32
+            },
+            {
+              "x": 267,
+              "y": 32
+            },
+            {
+              "x": 267,
+              "y": 167
+            },
+            {
+              "x": 137,
+              "y": 167
+            }
+          ],
+          "attributes": [
+            {
+              "key": "_label_",
+              "value": "{\"x\":112.97505800464036,\"y\":62.75923536842344}"
+            },
+            {
+              "key": "__META__",
+              "value": "{\"emissivity\":{\"enabled\":true,\"value\":0.92},\"evaluationRange\":{\"enabled\":true,\"max\":1973.15,\"min\":1273.15}}"
+            },
+            {
+              "key": "evalRangeStart",
+              "value": "1273.15"
+            },
+            {
+              "key": "evalRangeEnd",
+              "value": "1973.15"
+            },
+            {
+              "key": "emissivity",
+              "value": "0.92"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "results": [
+        {
+          "id": "AOI_0_Area",
+          "label": "AOI_0_Area",
+          "value": [],
+          "visibility": "Result table",
+          "resultType": "numeric",
+          "baseUnit": "Temperature",
+          "status": "valid",
+          "attributes": [
+            {
+              "key": "_eval_enable_",
+              "value": "true"
+            },
+            {
+              "key": "_algorithm_",
+              "value": "area"
+            },
+            {
+              "key": "_operator_",
+              "value": "__NONE__"
+            },
+            {
+              "key": "_roi_",
+              "value": "AOI_0"
+            },
+            {
+              "key": "_json_actions_",
+              "value": "[]"
+            }
+          ]
+        },
+        {
+          "id": "AOI_0_Result",
+          "label": "AOI_0_Result",
+          "value": [],
+          "visibility": "Result table",
+          "resultType": "numeric",
+          "baseUnit": "Temperature",
+          "status": "valid",
+          "attributes": [
+            {
+              "key": "_eval_enable_",
+              "value": "true"
+            },
+            {
+              "key": "_algorithm_",
+              "value": "mean"
+            },
+            {
+              "key": "_operator_",
+              "value": "__NONE__"
+            },
+            {
+              "key": "_roi_",
+              "value": "AOI_0"
+            },
+            {
+              "key": "_json_actions_",
+              "value": "[]"
+            }
+          ]
+        },
+        {
+          "id": "AOI_1_Result",
+          "label": "AOI_1_Result",
+          "value": [],
+          "visibility": "Result table",
+          "resultType": "numeric",
+          "baseUnit": "Temperature",
+          "status": "valid",
+          "attributes": [
+            {
+              "key": "_eval_enable_",
+              "value": "true"
+            },
+            {
+              "key": "_algorithm_",
+              "value": "mean"
+            },
+            {
+              "key": "_operator_",
+              "value": "__NONE__"
+            },
+            {
+              "key": "_roi_",
+              "value": "AOI_1"
+            },
+            {
+              "key": "_json_actions_",
+              "value": "[]"
+            }
+          ]
+        },
+        {
+          "id": "AOI_1_Count",
+          "label": "AOI_1_Count",
+          "value": [],
+          "visibility": "Result table",
+          "resultType": "numeric",
+          "baseUnit": "Temperature",
+          "status": "valid",
+          "attributes": [
+            {
+              "key": "_eval_enable_",
+              "value": "true"
+            },
+            {
+              "key": "_algorithm_",
+              "value": "count"
+            },
+            {
+              "key": "_operator_",
+              "value": "__NONE__"
+            },
+            {
+              "key": "_roi_",
+              "value": "AOI_1"
+            },
+            {
+              "key": "_json_actions_",
+              "value": "[]"
+            }
+          ]
+        },
+        {
+          "id": "AOI_0_Count",
+          "label": "AOI_0_Count",
+          "value": [],
+          "visibility": "Result table",
+          "resultType": "numeric",
+          "baseUnit": "Temperature",
+          "status": "valid",
+          "attributes": [
+            {
+              "key": "_eval_enable_",
+              "value": "true"
+            },
+            {
+              "key": "_algorithm_",
+              "value": "count"
+            },
+            {
+              "key": "_operator_",
+              "value": "__NONE__"
+            },
+            {
+              "key": "_roi_",
+              "value": "AOI_0"
+            },
+            {
+              "key": "_json_actions_",
+              "value": "[]"
+            }
+          ]
+        },
+        {
+          "id": "MaxTemp",
+          "label": "MaxTemp",
+          "value": [],
+          "visibility": "Result table",
+          "resultType": "numeric",
+          "baseUnit": "Temperature",
+          "status": "valid",
+          "attributes": [
+            {
+              "key": "_eval_enable_",
+              "value": "true"
+            },
+            {
+              "key": "_algorithm_",
+              "value": "max"
+            },
+            {
+              "key": "_operator_",
+              "value": "__NONE__"
+            },
+            {
+              "key": "_roi_",
+              "value": "AOI_0"
+            },
+            {
+              "key": "_json_actions_",
+              "value": "[]"
+            }
+          ]
+        },
+        {
+          "id": "TotalSlag",
+          "label": "TotalSlag",
+          "value": [],
+          "visibility": "Result table",
+          "resultType": "numeric",
+          "baseUnit": "Temperature",
+          "status": "valid",
+          "attributes": [
+            {
+              "key": "_eval_enable_",
+              "value": "true"
+            },
+            {
+              "key": "_algorithm_",
+              "value": "mean"
+            },
+            {
+              "key": "_operator_",
+              "value": "__NONE__"
+            },
+            {
+              "key": "_roi_",
+              "value": "AOI_0"
+            },
+            {
+              "key": "_json_actions_",
+              "value": "[]"
+            }
+          ]
+        },
+        {
+          "id": "AOI_0_Area_Bin",
+          "label": "N/A",
+          "value": [],
+          "visibility": "",
+          "resultType": "binary",
+          "baseUnit": "Boolean",
+          "status": "valid",
+          "attributes": [
+            {
+              "key": "parent",
+              "value": "AOI_0_Area"
+            },
+            {
+              "key": "_parent_",
+              "value": "AOI_0_Area"
+            }
+          ]
+        },
+        {
+          "id": "AOI_0_Result_Bin",
+          "label": "N/A",
+          "value": [],
+          "visibility": "",
+          "resultType": "binary",
+          "baseUnit": "Boolean",
+          "status": "valid",
+          "attributes": [
+            {
+              "key": "parent",
+              "value": "AOI_0_Result"
+            },
+            {
+              "key": "_parent_",
+              "value": "AOI_0_Result"
+            }
+          ]
+        },
+        {
+          "id": "AOI_1_Result_Bin",
+          "label": "N/A",
+          "value": [],
+          "visibility": "",
+          "resultType": "binary",
+          "baseUnit": "Boolean",
+          "status": "valid",
+          "attributes": [
+            {
+              "key": "parent",
+              "value": "AOI_1_Result"
+            },
+            {
+              "key": "_parent_",
+              "value": "AOI_1_Result"
+            }
+          ]
+        },
+        {
+          "id": "AOI_1_Count_Bin",
+          "label": "N/A",
+          "value": [],
+          "visibility": "",
+          "resultType": "binary",
+          "baseUnit": "Boolean",
+          "status": "valid",
+          "attributes": [
+            {
+              "key": "parent",
+              "value": "AOI_1_Count"
+            },
+            {
+              "key": "_parent_",
+              "value": "AOI_1_Count"
+            }
+          ]
+        },
+        {
+          "id": "AOI_0_Count_Bin",
+          "label": "N/A",
+          "value": [],
+          "visibility": "",
+          "resultType": "binary",
+          "baseUnit": "Boolean",
+          "status": "valid",
+          "attributes": [
+            {
+              "key": "parent",
+              "value": "AOI_0_Count"
+            },
+            {
+              "key": "_parent_",
+              "value": "AOI_0_Count"
+            }
+          ]
+        },
+        {
+          "id": "MaxTemp_Bin",
+          "label": "N/A",
+          "value": [],
+          "visibility": "",
+          "resultType": "binary",
+          "baseUnit": "Boolean",
+          "status": "valid",
+          "attributes": [
+            {
+              "key": "parent",
+              "value": "MaxTemp"
+            },
+            {
+              "key": "_parent_",
+              "value": "MaxTemp"
+            }
+          ]
+        },
+        {
+          "id": "TotalSlag_Bin",
+          "label": "N/A",
+          "value": [],
+          "visibility": "",
+          "resultType": "binary",
+          "baseUnit": "Boolean",
+          "status": "valid",
+          "attributes": [
+            {
+              "key": "parent",
+              "value": "TotalSlag"
+            },
+            {
+              "key": "_parent_",
+              "value": "TotalSlag"
+            }
+          ]
+        }
+      ],
+      "actions": [],
+      "opcLayout": {
+        "items": [],
+        "attributes": []
+      },
+      "mqttLayout": {
+        "items": [],
+        "attributes": []
+      },
+      "modbusSlaveLayout": {
+        "items": [],
+        "attributes": []
+      },
+      "modbusMasterLayout": {
+        "items": [],
+        "attributes": []
+      },
+      "profinetLayout": {
+        "items": [],
+        "attributes": []
+      },
+      "visualization": {
+        "layout": "image-results",
+        "colormap": "greyscale",
+        "image": {
+          "resolution": {
+            "width": 320,
+            "height": 240
+          },
+          "reverseX": false,
+          "reverseY": false,
+          "rotation": "Deg0"
+        },
+        "temperatureScaling": {
+          "mode": "autoRange",
+          "img_min": 0,
+          "img_max": 0,
+          "scaling_min": 0,
+          "scaling_max": 0
+        },
+        "chartCfg": {
+          "history": {
+            "bufferSize": 30,
+            "updateThreshold": 10,
+            "enableControls": false
+          }
+        },
+        "isotherms": [],
+        "attributes": []
+      },
+      "refImages": [],
+      "processingScript": "--GENERATED_CODE ONLY EDIT USER SECTIONS\n\n-- #INFO#\n-- Job: SlagDetection\n-- Creation date: 12-02-22,09:44:35\n-- Modified date: 12-05-22,10:18:47\n-- MD5: f10165598a8835ff9d502a19397a2769\n-- #END INFO#\n\n--GENERATED_CODE DO NOT EDIT\n\neval_AOI_0 = Statistic[\"AOI_0\"]\neval_AOI_1 = Statistic[\"AOI_1\"]\n\n--GENERATED_CODE_END\n\n--USER_GLOBAL_CODE_START\nlocal SlagSumOld = 0 + 273.15\nlocal SlagSumNew = 0 + 273.15\n\nlocal SumGesOld = 0 + 273.15\nlocal SumGesNew = 0 + 273.15\n--USER_GLOBAL_CODE_END\n\nfunction evaluate()\n    --USER_EVAL_PRE_START\n\n    --USER_EVAL_PRE_END\n\n    --GENERATED_CODE DO NOT EDIT\n\n    Results[\"AOI_0_Area\"] = eval_AOI_0:area()\n    Results[\"AOI_0_Area_Bin\"] = false\n    Results[\"AOI_0_Result\"] = eval_AOI_0:mean()\n    Results[\"AOI_0_Result_Bin\"] = false\n    Results[\"AOI_1_Result\"] = eval_AOI_1:mean()\n    Results[\"AOI_1_Result_Bin\"] = false\n    Results[\"AOI_1_Count\"] = eval_AOI_1:count()\n    Results[\"AOI_1_Count_Bin\"] = false\n    Results[\"AOI_0_Count\"] = eval_AOI_0:count()\n    Results[\"AOI_0_Count_Bin\"] = false\n    Results[\"MaxTemp\"] = eval_AOI_0:max()\n    Results[\"MaxTemp_Bin\"] = false\n    Results[\"TotalSlag\"] = eval_AOI_0:mean()\n    Results[\"TotalSlag_Bin\"] = false\n\n    ---GENERATED_CODE_END\n\n    --USER_EVAL_POST_START\n    Results[\"AOI_0_Result\"] = ((Results[\"AOI_0_Count\"]:getValue() / Results[\"AOI_0_Area\"]:getValue()) * 100) + 273.15\n    Results[\"AOI_1_Result\"] = ((Results[\"AOI_1_Count\"]:getValue() / Results[\"AOI_0_Count\"]:getValue()) * 100) + 273.15\n\n    SlagSumNew = Results[\"AOI_1_Count\"]:getValue()\n    SlagSumOld = SlagSumNew + SlagSumOld\n\n    SumGesNew = Results[\"AOI_0_Count\"]:getValue()\n    SumGesOld = SumGesNew + SumGesOld\n\n    Results[\"TotalSlag\"] = SumGesOld\n    --Results[\"TotalSlag\"] = ((SlagSumOld / SumGesOld) * 100) +273.15\n    --USER_EVAL_POST_END\nend\n"
+    }
+  ]
+}

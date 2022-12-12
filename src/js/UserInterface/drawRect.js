@@ -1,9 +1,11 @@
+let drawingEnabled = false;
 let canvas, rect, bluePoint, redPoint;
 let width, height, factor;
 let start = {};
 
 //coordinates for AOI
-export let coordinates, drawPoints;
+export let coordinates = [{x: 0, y: 0},{ x: 0, y: 0}, {x: 0, y: 0}, { x: 0, y: 0}];
+export let drawPoints = [['RectLine',[0, 0],[0, 0], [0, 0], [0, 0]]];
 
 //
 export function getCanvasInfo(imageResolution, resizeFactor){
@@ -27,6 +29,8 @@ function getMousePos(evt) {
 
 // mouse down event
 export function mouseDown(e) {
+    drawingEnabled = true;
+
     canvas = document.getElementById('drawAOICanvas');
     rect = document.getElementById("rect");
     bluePoint = document.getElementById('bluePoint');
@@ -75,5 +79,8 @@ function mouseUp(){
 }
 
 export function removeMousedown(){
-    canvas.removeEventListener('mousedown', mouseDown);
+    if(drawingEnabled){
+
+        canvas.removeEventListener('mousedown', mouseDown);
+    }
 }
