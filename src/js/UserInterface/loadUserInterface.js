@@ -12,11 +12,11 @@ export function loadUserInterface(user, jobName, specialJobInfo, resizeFactor){
     loadHtmlElements();
     resizeImage(specialJobInfo[3].width, resizeFactor);
 
-    addStatusEvents(user);
-    addConfigEvents(user, jobName, specialJobInfo[2], specialJobInfo[3], resizeFactor);
-
-    loadInfo(user.ip);
     createCharts();
     drawAOI(specialJobInfo[1], specialJobInfo[3].width, specialJobInfo[3].height);
+
+    addStatusEvents(user);
+    addConfigEvents(user, jobName, specialJobInfo[2], specialJobInfo[3], resizeFactor);
+    loadInfo(user.ip);
 }
 
