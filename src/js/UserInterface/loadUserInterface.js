@@ -10,10 +10,10 @@ import {addConfigEvents} from "./Configure/addConfigEvents";
 
 export function loadUserInterface(user, jobName, specialJobInfo, resizeFactor){
     loadHtmlElements();
-    resizeImage(specialJobInfo[3].width, resizeFactor);
+    resizeImage(specialJobInfo[3], resizeFactor);
 
     createCharts();
-    drawAOI(specialJobInfo[1], specialJobInfo[3].width, specialJobInfo[3].height);
+    drawAOI(specialJobInfo[1], specialJobInfo[3]);
 
     addStatusEvents(user);
     addConfigEvents(user, jobName, specialJobInfo[2], specialJobInfo[3], resizeFactor);

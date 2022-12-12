@@ -1,6 +1,7 @@
 let drawingEnabled = false;
 let canvas, rect, bluePoint, redPoint;
 let width, height, factor;
+
 let start = {};
 
 //coordinates for AOI
@@ -35,6 +36,9 @@ export function mouseDown(e) {
     rect = document.getElementById("rect");
     bluePoint = document.getElementById('bluePoint');
     redPoint = document.getElementById('redPoint');
+
+    bluePoint.style.display = 'initial';
+    redPoint.style.display = 'initial';
 
     start = getMousePos(e);
 
@@ -82,5 +86,8 @@ export function removeMousedown(){
     if(drawingEnabled){
 
         canvas.removeEventListener('mousedown', mouseDown);
+
+        bluePoint.style.display = 'none';
+        redPoint.style.display = 'none';
     }
 }

@@ -88,7 +88,7 @@ export function addConfigEvents(user, jobName, jobTempRanges, imageResolution, f
     document.getElementById('updateJobBtn').addEventListener('click', ()=>{
 
         changeJob(user.ip, jobName, areaMaxTemp, targetMaxTemp);
-        drawAOI( drawPoints, imageResolution.width, imageResolution.height);
+        drawAOI( drawPoints, imageResolution);
 
 
         /*USERINTERFACE*/
@@ -98,14 +98,17 @@ export function addConfigEvents(user, jobName, jobTempRanges, imageResolution, f
         let heat = document.getElementById('heat');
         let heatInput = document.getElementById('heatInput');
 
-        vessel.innerHTML = `BOF Vessel: ${vesselInput.value}`;
-        vesselInput.placeholder = vesselInput.value;
-        vesselInput.value = '';
+        if(vesselInput.value !== ''){
+            vessel.innerHTML = `BOF Vessel: ${vesselInput.value}`;
+            vesselInput.placeholder = vesselInput.value;
+            vesselInput.value = '';
+        }
 
-        heat.innerHTML = `Heat #: ${heatInput.value}`;
-        heatInput.placeholder = heatInput.value;
-        heatInput.value = '';
-
+        if(heatInput.value !== ''){
+            heat.innerHTML = `Heat #: ${heatInput.value}`;
+            heatInput.placeholder = heatInput.value;
+            heatInput.value = '';
+        }
 
         /*BUTTONEVENTS*/
 
