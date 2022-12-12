@@ -140,6 +140,9 @@ export function updateCharts(slag, totalSlag){
 
     /*SLAG CHART*/
     //update data
+   //slag < slagPercentage ? slagChart.data.datasets[0].backgroundColor = 'rgba(0, 220, 0,1)' : slagChart.data.datasets[0].backgroundColor = '#FF2200';
+   //totalSlag-15 < totalSlagPercentage ? slagChart.data.datasets[1].backgroundColor = 'rgba(0, 100, 0,1)' : slagChart.data.datasets[1].backgroundColor = '#9D0000';
+
     slagChart.data.datasets[0].data = [slag];
     slagChart.data.datasets[1].data = [totalSlag];
 
