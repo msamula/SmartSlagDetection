@@ -7,6 +7,17 @@ import {drawAOI} from "../Main/drawAOI";
 export let slagPercentage = 40;
 export let totalSlagPercentage = 2;
 
+let jobValuesChanged = false;
+
+/*show "job updated" alarm*/
+function showUpdated() {
+    document.getElementById('configureClose').click();
+    document.getElementById('dataUpdated').setAttribute('style', 'display:flex !important');
+    setTimeout(()=>{
+        document.getElementById('dataUpdated').setAttribute('style', 'display:none !important');
+    }, 1800);
+}
+
 export function addConfigEvents(user, jobName, jobTempRanges, imageResolution, factor){
 
     document.getElementById('configBtn').addEventListener('click', ()=>{
@@ -44,10 +55,12 @@ export function addConfigEvents(user, jobName, jobTempRanges, imageResolution, f
     areaTempThreshold.addEventListener('input',()=>{
         areaTempThresholdDisplay.innerHTML = `${areaTempThreshold.value} °C`;
         areaMaxTemp = Number(areaTempThreshold.value);
+        jobValuesChanged = true;
     });
     slagTempThreshold.addEventListener('input',()=>{
         slagTempThresholdDisplay.innerHTML = `${slagTempThreshold.value} °C`;
         targetMaxTemp = Number(slagTempThreshold.value);
+        jobValuesChanged = true;
     });
 
     slagPerc.addEventListener('input',()=>{
@@ -68,18 +81,22 @@ export function addConfigEvents(user, jobName, jobTempRanges, imageResolution, f
     });
 
     let drawAoiBtn = document.getElementById('drawAOIBtn');
+    let saveAoiBtn = document.getElementById('saveAOIBtn');
 
     drawAoiBtn.addEventListener('click', ()=> {
         drawAoiBtn.disabled = true;
+        saveAoiBtn.style.backgroundColor = '#dc3545';
         getCanvasInfo(imageResolution, factor);
         document.getElementById('drawAoiSvg').style.display = 'initial';
         document.getElementById('drawAOICanvas').addEventListener('mousedown', mouseDown)
     });
 
-    document.getElementById('saveAOIBtn').addEventListener('click',()=>{
+    saveAoiBtn.addEventListener('click',()=>{
         drawAoiBtn.innerHTML = '<img src="./media/rect_30.png" style="max-height: 20px;"> redraw Rectangle';
         drawAoiBtn.disabled = false;
+        saveAoiBtn.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
         removeMousedown();
+        jobValuesChanged = true;
     });
 
 
@@ -87,9 +104,11 @@ export function addConfigEvents(user, jobName, jobTempRanges, imageResolution, f
 
     document.getElementById('updateJobBtn').addEventListener('click', ()=>{
 
-        changeJob(user.ip, jobName, areaMaxTemp, targetMaxTemp);
-        drawAOI( drawPoints, imageResolution);
-
+        if(jobValuesChanged){
+            changeJob(user.ip, jobName, areaMaxTemp, targetMaxTemp);
+            drawAOI( drawPoints, imageResolution);
+            jobValuesChanged = false;
+        }
 
         /*USERINTERFACE*/
 
@@ -110,12 +129,6 @@ export function addConfigEvents(user, jobName, jobTempRanges, imageResolution, f
             heatInput.value = '';
         }
 
-        /*BUTTONEVENTS*/
-
-        document.getElementById('configureClose').click();
-        document.getElementById('dataUpdated').setAttribute('style', 'display:flex !important');
-        setTimeout(()=>{
-            document.getElementById('dataUpdated').setAttribute('style', 'display:none !important');
-        }, 1800);
+        showUpdated();
     });
 }
