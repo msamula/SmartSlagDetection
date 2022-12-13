@@ -3,8 +3,8 @@
 -- #INFO#
 -- Job: SlagDetection
 -- Creation date: 12-02-22,09:44:35
--- Modified date: 12-05-22,10:18:47
--- MD5: f10165598a8835ff9d502a19397a2769
+-- Modified date: 12-12-22,05:00:48
+-- MD5: 6155e4ab279cf97cfd8d7d3a1237b7e9
 -- #END INFO#
 
 --GENERATED_CODE DO NOT EDIT
@@ -20,11 +20,12 @@ local SlagSumNew = 0 + 273.15
 
 local SumGesOld = 0 + 273.15
 local SumGesNew = 0 + 273.15
+--Results["TotalSlag"] = 0 + 273.15
 --USER_GLOBAL_CODE_END
 
 function evaluate()
     --USER_EVAL_PRE_START
-
+    Results["TotalSlag"] = 0 + 273.15
     --USER_EVAL_PRE_END
 
     --GENERATED_CODE DO NOT EDIT
@@ -39,7 +40,7 @@ function evaluate()
     Results["AOI_1_Count_Bin"] = false
     Results["AOI_0_Count"] = eval_AOI_0:count()
     Results["AOI_0_Count_Bin"] = false
-    Results["MaxTemp"] = eval_AOI_0:max()
+    Results["MaxTemp"] = eval_AOI_0:min()
     Results["MaxTemp_Bin"] = false
     Results["TotalSlag"] = eval_AOI_0:mean()
     Results["TotalSlag_Bin"] = false
@@ -47,15 +48,35 @@ function evaluate()
     ---GENERATED_CODE_END
 
     --USER_EVAL_POST_START
-    Results["AOI_0_Result"] = ((Results["AOI_0_Count"]:getValue() / Results["AOI_0_Area"]:getValue()) * 100) + 273.15
-    Results["AOI_1_Result"] = ((Results["AOI_1_Count"]:getValue() / Results["AOI_0_Count"]:getValue()) * 100) + 273.15
+	
+		Results["AOI_0_Result"] = ((Results["AOI_0_Count"]:	getValue() / Results["AOI_0_Area"]:getValue()) * 100) + 273.15
+		
+		if (Results["AOI_0_Result"]:getValue() < (0.1 + 273.15))then
+		
+			SlagSumOld = 0 
+			SumGesOld  = 0 
+			
+		end
+		
+		Results["AOI_1_Result"] = ((Results["AOI_1_Count"]:getValue() / Results["AOI_0_Count"]:getValue()) * 100) + 273.15
+			
+		SlagSumNew = Results["AOI_1_Count"]:getValue()
+		SlagSumOld = SlagSumNew + SlagSumOld
+			
+		SumGesNew = Results["AOI_0_Count"]:getValue()
+		SumGesOld = SumGesNew + SumGesOld
+		
+		if (SumGesOld > 50000)then
+		
+			Results["TotalSlag"] = ((SlagSumOld / SumGesOld) * 100) + 273.15
+		
+		else
+		
+			Results["TotalSlag"] = 0 + 273.15
+		
+		end
 
-    SlagSumNew = Results["AOI_1_Count"]:getValue()
-    SlagSumOld = SlagSumNew + SlagSumOld
-
-    SumGesNew = Results["AOI_0_Count"]:getValue()
-    SumGesOld = SumGesNew + SumGesOld
-
-    Results["TotalSlag"] = ((SlagSumOld / SumGesOld) * 100) +273.15
     --USER_EVAL_POST_END
 end
+
+
