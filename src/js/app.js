@@ -10,6 +10,7 @@ import {getJobInfo} from "./DataAccess/getJobInfo";
 import {getImage} from "./DataAccess/getImage";
 import {getResults} from "./DataAccess/getResults";
 import {loadUserInterface} from "./UserInterface/loadUserInterface";
+import {getTiffData} from "./DataAccess/getTiff";
 
 
 //login data
@@ -45,5 +46,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
     //get data
     getResults(user.ip);
+
+    //color slag
+    getTiffData(user.ip);
 
 });

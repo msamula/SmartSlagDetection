@@ -4,6 +4,7 @@ import {drawPoints, getCanvasInfo, mouseDown, removeMousedown} from "./drawRect"
 import {changeJob} from "../../DataHandler/changeJob";
 import {drawAOI} from "../Main/drawAOI";
 
+export let targetMaxTemp;
 export let slagPercentage = 40;
 export let totalSlagPercentage = 2;
 
@@ -37,7 +38,7 @@ export function addConfigEvents(user, jobName, jobTempRanges, imageResolution, f
     let totalSlagPercDisplay = document.getElementById('totalSlagPercDisplay');
 
     let areaMaxTemp = jobTempRanges[0][0];
-    let targetMaxTemp = jobTempRanges[1][0];
+    targetMaxTemp = jobTempRanges[1][0];
 
     areaTempThreshold.value = areaMaxTemp;
     slagTempThreshold.value = targetMaxTemp;
