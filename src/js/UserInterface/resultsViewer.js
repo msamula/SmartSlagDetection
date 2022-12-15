@@ -46,7 +46,8 @@ export function handleResults(json){
         }
 
         if(json.results[i].id === 'AOI_0_Count'){
-            if(json.results[i].value[0] > 3000){
+            if(updateHeatVessel === false && json.results[i].value[0] > 300){
+
                 updateHeatVessel = true;
             }
         }

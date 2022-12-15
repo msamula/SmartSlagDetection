@@ -6,7 +6,7 @@ import {drawAOI} from "../Main/drawAOI";
 
 export let targetMaxTemp;               //changed to export bcs of getTiff
 export let slagPercentage = 40;
-export let totalSlagPercentage = 2;
+export let totalSlagPercentage = 3.5;
 
 let heat, heatInput, vessel, vesselInput;
 let heatNo = 8729;
