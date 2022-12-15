@@ -4,7 +4,7 @@ import {drawPoints, getCanvasInfo, mouseDown, removeMousedown} from "./drawRect"
 import {changeJob} from "../../DataHandler/changeJob";
 import {drawAOI} from "../Main/drawAOI";
 
-export let targetMaxTemp;
+export let targetMaxTemp;               //changed to export bcs of getTiff
 export let slagPercentage = 40;
 export let totalSlagPercentage = 2;
 

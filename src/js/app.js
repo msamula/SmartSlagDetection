@@ -48,6 +48,6 @@ window.addEventListener('DOMContentLoaded', () => {
     getResults(user.ip);
 
     //color slag
-    getTiffData(user.ip);
+    //getTiffData(user.ip);
 
 });
