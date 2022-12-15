@@ -8,6 +8,10 @@ export let targetMaxTemp;               //changed to export bcs of getTiff
 export let slagPercentage = 40;
 export let totalSlagPercentage = 2;
 
+let heat, heatInput, vessel, vesselInput;
+let heatNo = 8729;
+let vesselNo = 1;
+
 let jobValuesChanged = false;
 
 /*show "job updated" alarm*/
@@ -17,6 +21,15 @@ function showUpdated() {
     setTimeout(()=>{
         document.getElementById('dataUpdated').setAttribute('style', 'display:none !important');
     }, 1800);
+}
+
+export function updateVesselHeat(){
+    heatNo++;
+    vesselNo++;
+    vessel.innerHTML = `BOF Vessel: ${vesselNo}`;
+    heat.innerHTML = `Heat #: ${heatNo}`;
+    vesselInput.placeholder = vesselNo;
+    heatInput.placeholder = heatNo;
 }
 
 export function addConfigEvents(user, jobName, jobTempRanges, imageResolution, factor){
@@ -36,6 +49,16 @@ export function addConfigEvents(user, jobName, jobTempRanges, imageResolution, f
     let totalSlagPerc = document.getElementById('totalSlagPerc');
     let slagPercDisplay = document.getElementById('slagPercDisplay');
     let totalSlagPercDisplay = document.getElementById('totalSlagPercDisplay');
+
+    vessel = document.getElementById('vessel');
+    vesselInput = document.getElementById('vesselInput');
+    heat = document.getElementById('heat');
+    heatInput = document.getElementById('heatInput');
+
+    vessel.innerHTML = `BOF Vessel: ${vesselNo}`;
+    heat.innerHTML = `Heat #: ${heatNo}`;
+    vesselInput.placeholder = vesselNo;
+    heatInput.placeholder = heatNo;
 
     let areaMaxTemp = jobTempRanges[0][0];
     targetMaxTemp = jobTempRanges[1][0];
@@ -113,18 +136,15 @@ export function addConfigEvents(user, jobName, jobTempRanges, imageResolution, f
 
         /*USERINTERFACE*/
 
-        let vessel = document.getElementById('vessel');
-        let vesselInput = document.getElementById('vesselInput');
-        let heat = document.getElementById('heat');
-        let heatInput = document.getElementById('heatInput');
-
         if(vesselInput.value !== ''){
+            vesselNo = vesselInput.value;
             vessel.innerHTML = `BOF Vessel: ${vesselInput.value}`;
             vesselInput.placeholder = vesselInput.value;
             vesselInput.value = '';
         }
 
         if(heatInput.value !== ''){
+            heatNo = heatInput.value;
             heat.innerHTML = `Heat #: ${heatInput.value}`;
             heatInput.placeholder = heatInput.value;
             heatInput.value = '';
