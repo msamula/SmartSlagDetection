@@ -3,6 +3,7 @@ import annotationPlugin from 'chartjs-plugin-annotation';
 import {slagPercentage, totalSlagPercentage} from "../Configure/addConfigEvents";
 
 let slagChart, timeChart;
+let timeChartLength = 40;
 
 function addData(chart, label, data) {
     chart.data.labels.push(label);
@@ -131,8 +132,17 @@ export function createCharts(){
         }
     });
 
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < timeChartLength; i++) {
         addData(timeChart, '', 0);
+    }
+}
+
+export function resetTimeChart(){
+
+    //timeChart.data.datasets[0].data = [];
+
+    for (let i = 0; i < timeChartLength; i++) {
+        timeChart.data.datasets[0].data[i] = 0;
     }
 }
 
@@ -159,7 +169,7 @@ export function updateCharts(slag, totalSlag){
     timeChart.data.datasets[0].data.push(slag);
 
     slagChart.update('none');   //'none' --> nicht animiert
-    timeChart.update();
+    timeChart.update('none');
 }
 
 export function updateChartLines(slagValue, totalSlagValue) {

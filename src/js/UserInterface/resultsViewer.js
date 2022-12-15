@@ -1,4 +1,4 @@
-import {updateCharts} from "./Main/charts";
+import {resetTimeChart, updateCharts} from "./Main/charts";
 import {slagPercentage, totalSlagPercentage} from "./Configure/addConfigEvents";
 import {tapTemp, alarm, slagDisplay, totalSlagDisplay, dateTime} from "./Main/loadHtmlElements";
 
@@ -28,6 +28,8 @@ export function handleResults(json){
 
         if(json.results[i].id === 'AOI_0_Count'){
             if(json.results[i].value[0] < 300){
+
+                resetTimeChart();
 
                 let date = new Date();
                 dateTime.innerHTML = `Date/Time: ${date.getDate()}.${date.getMonth()}.${date.getFullYear()}  ${(date.getHours()<10?'0':'') + date.getHours()}:${(date.getMinutes()<10?'0':'') + date.getMinutes()}:${(date.getSeconds()<10?'0':'') + date.getSeconds()}`;
