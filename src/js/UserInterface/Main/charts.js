@@ -2,9 +2,12 @@ import Chart from 'chart.js/auto';
 import annotationPlugin from 'chartjs-plugin-annotation';
 import {slagPercentage, totalSlagPercentage} from "../Configure/addConfigEvents";
 
+/*ALL CHART FUNCTIONS*/
+
 let slagChart, timeChart;
 let timeChartLength = 40;
 
+/*helper function to create timeChart*/
 function addData(chart, label, data) {
     chart.data.labels.push(label);
     chart.data.datasets.forEach((dataset) => {
@@ -13,6 +16,8 @@ function addData(chart, label, data) {
     chart.update('none');
 }
 
+
+/*--- create charts when app starts ---*/
 export function createCharts(){
 
     Chart.register(annotationPlugin);
@@ -137,6 +142,8 @@ export function createCharts(){
     }
 }
 
+
+/*RESET TIMECHART*/
 export function resetTimeChart(){
 
     //timeChart.data.datasets[0].data = [];
@@ -146,12 +153,9 @@ export function resetTimeChart(){
     }
 }
 
-export function updateCharts(slag, totalSlag){
 
-    /*SLAG CHART*/
-    //update data
-   //slag < slagPercentage ? slagChart.data.datasets[0].backgroundColor = 'rgba(0, 220, 0,1)' : slagChart.data.datasets[0].backgroundColor = '#FF2200';
-   //totalSlag-15 < totalSlagPercentage ? slagChart.data.datasets[1].backgroundColor = 'rgba(0, 100, 0,1)' : slagChart.data.datasets[1].backgroundColor = '#9D0000';
+/*UPDATE CHARTS*/
+export function updateCharts(slag, totalSlag){
 
     slagChart.data.datasets[0].data = [slag];
     slagChart.data.datasets[1].data = [totalSlag];
@@ -172,6 +176,8 @@ export function updateCharts(slag, totalSlag){
     timeChart.update('none');
 }
 
+
+/*UPDATE THRESHOLDS/LINES IN CHARTS*/
 export function updateChartLines(slagValue, totalSlagValue) {
 
     slagChart.options.plugins = {

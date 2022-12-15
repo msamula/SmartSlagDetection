@@ -58,7 +58,7 @@ function getThresholds(json) {
 }
 
 
-//GET all coordinates and all thresholds from job
+// get completeJob and return specialJobInfo
 export function getJobInfo(ip, jobID){
 
     let results =[];

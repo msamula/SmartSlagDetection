@@ -1,6 +1,5 @@
 import {resizeImage} from "./Main/resizeImage";
 import {addStatusEvents} from "./Status/addStatusEvents";
-import {loadInfo} from "./Status/loadInfo";
 import {createCharts} from "./Main/charts";
 import {drawAOI} from "./Main/drawAOI";
 import {loadHtmlElements} from "./Main/loadHtmlElements";
@@ -17,6 +16,5 @@ export function loadUserInterface(user, jobName, specialJobInfo, resizeFactor){
 
     addStatusEvents(user);
     addConfigEvents(user, jobName, specialJobInfo[2], specialJobInfo[3], resizeFactor);
-    loadInfo(user.ip);
 }
 
