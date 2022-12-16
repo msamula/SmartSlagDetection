@@ -46,10 +46,10 @@ window.addEventListener('DOMContentLoaded', () => {
     loadUserInterface(user, jobName, specialJobInfo, resizeFactor);
 
     //get cameraImage
-    getImage(user);
+    //getImage(user);
 
     //color slag
-    getTiffData(user.ip);
+    getTiffData(user);
 
     //get data
     getResults(user.ip);

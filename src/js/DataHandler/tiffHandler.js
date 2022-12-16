@@ -2,8 +2,9 @@ import UTIF from './Helper/utif';
 import {TiffData} from "./models";
 import {getTiffData} from "../DataAccess/getTiff";
 import {targetMaxTemp} from "../UserInterface/Configure/addConfigEvents";
+import {cameraImage} from "../UserInterface/Main/loadHtmlElements";
 
-let tiffData, canvas, ctx, tiffTagsLoaded = false, htmlElementsLoaded = false, targetTemp;
+let tiffData, canvas, ctx, tiffTagsLoaded = false, htmlElementsLoaded = false, targetTemp, bitmapData;
 
 function getHtmlElements(imgWidth, imgHeight){
 
@@ -49,10 +50,65 @@ function drawPixel (canvasData, x, y, imgWidth) {
     canvasData.data[index + 3]  = 255;
 }
 
-function pixelHandler(tiffData, img, imgWidth, imgHeight){
+function conv(size) {
+    return String.fromCharCode(size&0xff, (size>>8)&0xff, (size>>16)&0xff, (size>>24)&0xff);
+}
+
+function createDataForBitmap(arr, width, height){
+
+    let offset = 54 + Math.pow(2, 8)*4 ;
+
+    //BMP Header
+    bitmapData  = 'BM';                               // ID field
+    bitmapData += conv(offset + arr.length);     // BMP size
+    bitmapData += conv(0);                       // unused
+    bitmapData += conv(offset);                      // pixel data offset
+
+    //DIB Header
+    bitmapData += conv(40);                      // DIB header length
+    bitmapData += conv(width);                       // image width
+    bitmapData += conv(height);                       // image height
+    bitmapData += String.fromCharCode(1, 0);       // colour panes
+    bitmapData += String.fromCharCode(8, 0);      // bits per pixel
+    bitmapData += conv(0);                        // compression method
+    bitmapData += conv(arr.length);                   // size of the raw data
+    bitmapData += conv(0);                       // horizontal print resolution
+    bitmapData += conv(0);                       // vertical print resolution
+    bitmapData += conv(0);                       // colour palette, 0 == 2^n
+    bitmapData += conv(0);                       // important colours
+
+    //Grayscale tables for bit depths
+    bitmapData += conv(0);
+    for (let s = Math.floor(255/(Math.pow(2, 8)-1)), i = s; i < 256; i += s)  {
+        bitmapData += conv(i + i*256 + i*65536);
+    }
+
+}
+
+function arrayToBitmap(arr) {
+
+    //https://gist.github.com/vukicevic/8112515
+
+    let data = bitmapData;
+
+    arr.reverse();
+
+    //Pixel data
+    data += String.fromCharCode.apply(String, arr);
+
+    //Image element
+    cameraImage.src = 'data:image/bmp;base64,' + btoa(data);
+
+    cameraImage.onload = () => {
+        URL.revokeObjectURL(cameraImage.src);
+    }
+}
+
+function pixelHandler(tiffData, Img8Bit, Img16Bit, imgWidth, imgHeight){
 
     if(!htmlElementsLoaded){
         getHtmlElements(imgWidth, imgHeight);
+        createDataForBitmap( Img8Bit,imgWidth, imgHeight)
     }
 
     ctx.clearRect(0, 0, imgWidth, imgHeight);
@@ -65,7 +121,7 @@ function pixelHandler(tiffData, img, imgWidth, imgHeight){
     for (let y = 0; y < imgHeight; y++) {
         for (let x = 0; x < imgWidth; x++) {
 
-            let pixelValue = calcPixelValue(img,x,y,imgWidth);
+            let pixelValue = calcPixelValue(Img16Bit,x,y,imgWidth);
 
             if(pixelValue > targetTemp){
                 drawPixel(canvasData, x,y, imgWidth);
@@ -77,7 +133,7 @@ function pixelHandler(tiffData, img, imgWidth, imgHeight){
 }
 
 
-export function handleTiffData(tiff, ip) {
+export function handleTiffData(tiff, user) {
 
     let decoded = UTIF.decode(tiff);
 
@@ -94,10 +150,15 @@ export function handleTiffData(tiff, ip) {
 
 
     UTIF.decodeImages(tiff, decoded)
+    let Img8Bit  = decoded[0].data;
     let Img16Bit = decoded[1].data;
 
-    pixelHandler(tiffData, Img16Bit, decoded[0].width, decoded[0].height);
 
-    getTiffData(ip);
+    pixelHandler(tiffData, Img8Bit, Img16Bit, decoded[0].width, decoded[0].height);
+    arrayToBitmap(Img8Bit);
+
+    getTiffData(user);
 }
-///////////////////https://gist.github.com/vukicevic/8112515
+
+
+

@@ -1,13 +1,15 @@
-import {awaitNewToken, expireTime, token} from "./getToken";
+import {awaitNewToken, checkToken, expireTime, token} from "./getToken";
 import {handleTiffData} from "../DataHandler/tiffHandler";
 
-export async function getTiffData(ip){
+export async function getTiffData(user){
 
-    if(expireTime > (token.expireSec*0.9)-0.3){
+/*    if(expireTime > (token.expireSec*0.9)-0.3){
         await awaitNewToken(500);
-    }
+    }*/
 
-    let response = await fetch(`http://${ip}/api/images/live`, {
+    await checkToken(user);
+
+    let response = await fetch(`http://${user.ip}/api/images/live`, {
         headers: {
             'accept': 'image/tiff',
             'Authorization': `Bearer ${token.accessToken}`
@@ -16,9 +18,9 @@ export async function getTiffData(ip){
 
 
     if (response.status === 200) {
-        handleTiffData(await response.arrayBuffer(), ip);
+        handleTiffData(await response.arrayBuffer(), user);
     }
     if (response.status !== 200) {
-        getTiffData(ip);
+        getTiffData(user);
     }
 }

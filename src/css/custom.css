@@ -2,6 +2,10 @@ body{
     background-color: #212529;
     margin-top: 1%;
 }
+img {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
 
 .row{
     margin-top: 1%;
