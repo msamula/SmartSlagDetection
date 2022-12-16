@@ -1,7 +1,11 @@
-import {expireTime, token} from "./getToken";
+import {awaitNewToken, expireTime, token} from "./getToken";
 import {handleTiffData} from "../DataHandler/tiffHandler";
 
 export async function getTiffData(ip){
+
+    if(expireTime > (token.expireSec*0.1)-0.3){
+        await awaitNewToken(500);
+    }
 
     let response = await fetch(`http://${ip}/api/images/live`, {
         headers: {

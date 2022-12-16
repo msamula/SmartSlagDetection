@@ -5,7 +5,8 @@ import {cameraImage} from "../UserInterface/Main/loadHtmlElements";
 //get the camera image
 
 export async function getImage(user) {
-    //await checkToken(user);
+
+    await checkToken(user);
 
     let response = await fetch(`http://${user.ip}/api/images/live`, {
         headers: {

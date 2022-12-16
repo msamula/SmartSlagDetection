@@ -1,13 +1,9 @@
-import {expireTime, token} from "./getToken";
+import {awaitNewToken, expireTime, token} from "./getToken";
 import {handleResults} from "../UserInterface/resultsViewer";
-
-function awaitNewToken(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
 
 export async function getResults(ip) {
 
-    if(expireTime < 60.3){
+    if(expireTime > (token.expireSec*0.1)-0.3){
         await awaitNewToken(500);
     }
 
