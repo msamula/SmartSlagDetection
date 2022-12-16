@@ -48,10 +48,10 @@ window.addEventListener('DOMContentLoaded', () => {
     //get cameraImage
     getImage(user);
 
-    //get data
-    getResults(user.ip);
-
     //color slag
     getTiffData(user.ip);
+
+    //get data
+    getResults(user.ip);
 
 });

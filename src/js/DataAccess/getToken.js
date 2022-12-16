@@ -49,7 +49,7 @@ async function refreshToken(user,refreshToken){
 export async function checkToken(user){
     let dateNow = new Date();
     expireTime = (dateStart - dateNow)/(-1000);
-    if(expireTime > token.expireSec*0.1){
+    if(expireTime > token.expireSec*0.9){
         await refreshToken(user, token.refreshToken);
     }
 }

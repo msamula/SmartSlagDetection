@@ -1,5 +1,6 @@
 import {checkToken, token} from "./getToken";
 import {cameraImage} from "../UserInterface/Main/loadHtmlElements";
+import {showError} from "../UserInterface/Main/messages";
 
 
 //get the camera image
@@ -28,5 +29,8 @@ export async function getImage(user) {
 
         //start new request after the previous one is done
         getImage(user);
+    }
+    if (response.status !== 200) {
+        showError('No Image!','No image received from the camera');
     }
 }

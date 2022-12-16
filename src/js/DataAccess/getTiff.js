@@ -3,7 +3,7 @@ import {handleTiffData} from "../DataHandler/tiffHandler";
 
 export async function getTiffData(ip){
 
-    if(expireTime > (token.expireSec*0.1)-0.3){
+    if(expireTime > (token.expireSec*0.9)-0.3){
         await awaitNewToken(500);
     }
 

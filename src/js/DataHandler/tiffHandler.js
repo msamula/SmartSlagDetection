@@ -100,3 +100,4 @@ export function handleTiffData(tiff, ip) {
 
     getTiffData(ip);
 }
+///////////////////https://gist.github.com/vukicevic/8112515
