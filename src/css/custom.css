@@ -85,7 +85,7 @@ body{
     border-radius: 5px;
 }
 
-.update{
+.message{
     max-height: 30px;
     z-index: 1;
     opacity: 45%;

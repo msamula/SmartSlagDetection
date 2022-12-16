@@ -13,7 +13,7 @@ function uploadJob(ip, job){
         body: JSON.stringify(job)})
 }
 
-function activateJob(ip, jobName){
+export function activateJob(ip, jobName){
     fetch(`http://${ip}/api/jobs/activate`, {
         method: 'POST',
         headers: {

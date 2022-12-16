@@ -1,4 +1,5 @@
 import {token} from "./getToken";
+import {showError} from "../UserInterface/Main/messages";
 
 export let completeJob;
 
@@ -8,7 +9,21 @@ function getTempRanges(json){
     let result =[];
 
     for (let i = 0; i < json.rois.length; i++) {
-        result.push( [Number((json.rois[i].attributes[2].value - 273.15).toFixed(0)), Number((json.rois[i].attributes[3].value - 273.15).toFixed(0))]);
+
+        let evalRangeStart, evalRangeEnd;
+
+        for (let j = 0; j < json.rois[i].attributes.length; j++) {
+
+            if(json.rois[i].attributes[j].key === 'evalRangeStart'){
+                evalRangeStart = Number((json.rois[i].attributes[j].value - 273.15).toFixed(0));
+            }
+
+            if(json.rois[i].attributes[j].key === 'evalRangeEnd'){
+                evalRangeEnd = Number((json.rois[i].attributes[j].value - 273.15).toFixed(0));
+            }
+        }
+
+        result.push([evalRangeStart, evalRangeEnd]);
     }
 
     return result;
@@ -71,6 +86,11 @@ export function getJobInfo(ip, jobID){
             completeJob = JSON.parse(request.response);
 
             results = [getThresholds(completeJob), getCoordinates(completeJob), getTempRanges(completeJob), getImageResolution(completeJob)];
+
+        }
+
+        if(request.readyState === 4 && request.status !== 200) {
+            showError('Job not found!', 'Please make sure the job called "SlagDetection" is loaded.');
         }
     };
 

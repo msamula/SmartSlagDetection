@@ -3,6 +3,7 @@ import {updateChartLines} from "../Main/charts";
 import {drawPoints, getCanvasInfo, mouseDown, removeMousedown} from "./drawRect";
 import {changeJob} from "../../DataHandler/changeJob";
 import {drawAOI} from "../Main/drawAOI";
+import {jobUpdated} from "../Main/messages";
 
 export let targetMaxTemp;               //changed to export bcs of getTiff
 export let slagPercentage = 40;
@@ -16,11 +17,9 @@ let jobValuesChanged = false;
 
 /*show "job updated" alarm*/
 function showUpdated() {
+
     document.getElementById('configureClose').click();
-    document.getElementById('dataUpdated').setAttribute('style', 'display:flex !important');
-    setTimeout(()=>{
-        document.getElementById('dataUpdated').setAttribute('style', 'display:none !important');
-    }, 1800);
+    jobUpdated();
 }
 
 export function updateVesselHeat(){
