@@ -1,17 +1,20 @@
-import {token} from "./getToken";
+import {expireTime, token} from "./getToken";
 import {handleTiffData} from "../DataHandler/tiffHandler";
 
-export function getTiffData(ip){
+export async function getTiffData(ip){
 
-    let xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( 'GET', `http://${ip}/api/images/live`, true); // false for synchronous request
-    xmlHttp.setRequestHeader('accept', 'image/tiff');
-    xmlHttp.setRequestHeader('Authorization', `Bearer ${token.accessToken}`);
-    xmlHttp.responseType = 'arraybuffer';
+    let response = await fetch(`http://${ip}/api/images/live`, {
+        headers: {
+            'accept': 'image/tiff',
+            'Authorization': `Bearer ${token.accessToken}`
+        }
+    })
 
-    xmlHttp.onload = function () {
-        handleTiffData(xmlHttp.response, ip);
+
+    if (response.status === 200) {
+        handleTiffData(await response.arrayBuffer(), ip);
     }
-
-    xmlHttp.send( null );
+    if (response.status !== 200) {
+        getTiffData(ip);
+    }
 }

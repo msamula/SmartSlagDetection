@@ -31,9 +31,9 @@ function pixelToTemp(tiffData,pixelValue) {
     return tiffData.B/(Math.log((tiffData.R/(pixelValue-tiffData.RBFOffset))+tiffData.F));
 }
 
-function tempToPixelValue(tiffData, temp){
+function tempToPixelValue(tiffData, tempKelvin){
     for (let i = 704; i < Infinity; i++) {          //Pixelwert von 704 = 0 Kelvin
-        if(temp<pixelToTemp(tiffData,i)){
+        if(tempKelvin<pixelToTemp(tiffData,i)){
             return i-1;
         }
     }
@@ -44,7 +44,7 @@ function drawPixel (canvasData, x, y, imgWidth) {
     let index = (x + y * imgWidth) * 4;
 
     canvasData.data[index]      = 255;
-    canvasData.data[index + 1]  =   0;
+    canvasData.data[index + 1]  =  34;
     canvasData.data[index + 2]  =   0;
     canvasData.data[index + 3]  = 255;
 }
@@ -58,9 +58,9 @@ function pixelHandler(tiffData, img, imgWidth, imgHeight){
     ctx.clearRect(0, 0, imgWidth, imgHeight);
     let canvasData = ctx.getImageData(0, 0, imgWidth, imgHeight);
 
-/*    if(targetTemp === undefined){*/
-        targetTemp = tempToPixelValue(tiffData, targetMaxTemp);
-/*    }*/
+    //if(targetTemp === undefined){
+        targetTemp = tempToPixelValue(tiffData, (targetMaxTemp + 273.15));
+    //}
 
     for (let y = 0; y < imgHeight; y++) {
         for (let x = 0; x < imgWidth; x++) {

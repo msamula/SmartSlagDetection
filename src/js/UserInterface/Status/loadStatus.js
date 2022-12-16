@@ -20,7 +20,7 @@ export function loadStatus(ip){
     document.getElementById('slaveActive').innerHTML =`${deviceStatus.servers[3].numActive}`;
     document.getElementById('slaveConnections').innerHTML =`${deviceStatus.servers[3].numConnections}`;
 
-    document.getElementById('mainboardTemp').innerHTML =`${(deviceStatus.temperatures[0].temperature - 273.15)}°C`;
-    document.getElementById('minTemp').innerHTML =`${(deviceStatus.temperatures[1].temperature - 273.15)}°C`;
-    document.getElementById('maxTemp').innerHTML =`${(deviceStatus.temperatures[2].temperature - 273.15)}°C`;
+    document.getElementById('mainboardTemp').innerHTML =`${(deviceStatus.temperatures[0].temperature - 273.15).toFixed(2)}°C`;
+    document.getElementById('minTemp').innerHTML =`${(deviceStatus.temperatures[1].temperature - 273.15).toFixed(2)}°C`;
+    document.getElementById('maxTemp').innerHTML =`${(deviceStatus.temperatures[2].temperature - 273.15).toFixed(2)}°C`;
 }
