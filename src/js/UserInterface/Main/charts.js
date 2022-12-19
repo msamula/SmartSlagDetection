@@ -5,7 +5,7 @@ import {slagPercentage, totalSlagPercentage} from "../Configure/addConfigEvents"
 /*ALL CHART FUNCTIONS*/
 
 let slagChart, timeChart;
-let timeChartLength = 40;
+let timeChartLength = 150;
 
 /*helper function to create timeChart*/
 function addData(chart, label, data) {

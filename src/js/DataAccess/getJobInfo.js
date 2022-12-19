@@ -1,6 +1,7 @@
 import {token} from "./getToken";
 import {showError} from "../UserInterface/Main/messages";
 
+//complete Job
 export let completeJob;
 
 // temperature ranges from the areas of interest(aoi)

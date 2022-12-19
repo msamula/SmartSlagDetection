@@ -1,9 +1,10 @@
 import {awaitNewToken, checkToken, expireTime, token} from "./getToken";
 import {handleTiffData} from "../DataHandler/tiffHandler";
-import {showError} from "../UserInterface/Main/messages";
 
+//get the camera image as tiff
 export async function getTiffData(user){
 
+//used when getImage is activated (can be ignored or deleted)
 /*    if(expireTime > (token.expireSec*0.9)-0.3){
         await awaitNewToken(500);
     }*/
@@ -17,12 +18,14 @@ export async function getTiffData(user){
         }
     })
 
-
+    // work with tiff image
     if (response.status === 200) {
         handleTiffData(await response.arrayBuffer(), user);
     }
+
+    // if no response call function again
     if (response.status !== 200) {
-        //showError('No Image!','No image received from the camera');
+
         getTiffData(user);
     }
 }

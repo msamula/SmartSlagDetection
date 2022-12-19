@@ -1,6 +1,7 @@
 import {awaitNewToken, expireTime, token} from "./getToken";
 import {handleResults} from "../UserInterface/resultsViewer";
 
+//get the lua script results from camera
 export async function getResults(ip) {
 
     if(expireTime > (token.expireSec*0.9)-0.3){

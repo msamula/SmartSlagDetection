@@ -6,6 +6,7 @@ import {cameraImage} from "../UserInterface/Main/loadHtmlElements";
 
 let tiffData, canvas, ctx, tiffTagsLoaded = false, htmlElementsLoaded = false, targetTemp, bitmapData, initialChange = true;
 
+// helper function to load once html elements when app started
 function getHtmlElements(imgWidth, imgHeight){
 
     canvas = document.getElementById('slagCanvas');
@@ -17,6 +18,8 @@ function getHtmlElements(imgWidth, imgHeight){
     htmlElementsLoaded = true;
 }
 
+
+// helper functions for color the slag
 function calcPixelValue(img, x, y, imgWidth) {
     let rX = x * 2;                                     //erster und zweiter array-eintrag ergeben zusammen den ersten pixel von 16 bit bzw 2 byte
     let rY = (imgWidth * y) * 2;
@@ -50,6 +53,7 @@ function drawPixel (canvasData, x, y, imgWidth) {
     canvasData.data[index + 3]  = 255;
 }
 
+// helper functions for tiff data to bitmap image
 function conv(size) {
     return String.fromCharCode(size&0xff, (size>>8)&0xff, (size>>16)&0xff, (size>>24)&0xff);
 }
@@ -104,6 +108,7 @@ function arrayToBitmap(arr) {
     }
 }
 
+//color the slag
 function pixelHandler(tiffData, Img8Bit, Img16Bit, imgWidth, imgHeight){
 
     if(!htmlElementsLoaded){
@@ -134,7 +139,7 @@ function pixelHandler(tiffData, Img8Bit, Img16Bit, imgWidth, imgHeight){
     ctx.putImageData(canvasData, 0, 0);
 }
 
-
+// get image from tiff data and color the slag
 export function handleTiffData(tiff, user) {
 
     let decoded = UTIF.decode(tiff);
@@ -156,8 +161,8 @@ export function handleTiffData(tiff, user) {
     let Img16Bit = decoded[1].data;
 
 
-    pixelHandler(tiffData, Img8Bit, Img16Bit, decoded[0].width, decoded[0].height);
-    arrayToBitmap(Img8Bit);
+    pixelHandler(tiffData, Img8Bit, Img16Bit, decoded[0].width, decoded[0].height);     //color the slag
+    arrayToBitmap(Img8Bit);                                                             //get bitmap image from tiff
 
     getTiffData(user);
 }

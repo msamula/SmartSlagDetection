@@ -50,7 +50,7 @@ async function refreshToken(user,refreshToken){
 }
 
 
-//check if token is expired
+//check if token is expired -> if true, call refreshToken function
 export async function checkToken(user){
     let dateNow = new Date();
     expireTime = (dateStart - dateNow)/(-1000);
@@ -59,6 +59,7 @@ export async function checkToken(user){
     }
 }
 
+//sleep function
 export function awaitNewToken(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }

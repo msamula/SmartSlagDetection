@@ -4,10 +4,11 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/custom.css';
 
+import {getImage} from "./DataAccess/getImage";
+
 import {User} from "./DataHandler/models";
 import {getToken} from "./DataAccess/getToken";
 import {getJobInfo} from "./DataAccess/getJobInfo";
-import {getImage} from "./DataAccess/getImage";
 import {getResults} from "./DataAccess/getResults";
 import {loadUserInterface} from "./UserInterface/loadUserInterface";
 import {getTiffData} from "./DataAccess/getTiff";
@@ -15,7 +16,7 @@ import {activateJob} from "./DataHandler/changeJob";
 
 
 //login data
-const ipAddress = '169.254.64.2';           /* 'localhost:8080' '169.254.64.2' */
+const ipAddress = '169.254.64.2';          /* 'localhost:8080' '169.254.64.2' */
 const clientID = 'irsxApp';
 const clientSecret = 'MnrY2L86pEQr53!6';
 const username = 'administrator';
@@ -45,7 +46,7 @@ window.addEventListener('DOMContentLoaded', () => {
     //Userinterface
     loadUserInterface(user, jobName, specialJobInfo, resizeFactor);
 
-    //get cameraImage
+    //get cameraImage as bitmap
     //getImage(user);
 
     //color slag

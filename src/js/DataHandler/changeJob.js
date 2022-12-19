@@ -2,6 +2,7 @@ import{completeJob} from "../DataAccess/getJobInfo";
 import {token} from "../DataAccess/getToken";
 import {coordinates} from "../UserInterface/Configure/drawRect";
 
+//upload job on camera
 function uploadJob(ip, job){
     fetch(`http://${ip}/api/jobs`, {
         method: 'POST',
@@ -13,6 +14,8 @@ function uploadJob(ip, job){
         body: JSON.stringify(job)})
 }
 
+
+//activate Job
 export function activateJob(ip, jobName){
     fetch(`http://${ip}/api/jobs/activate`, {
         method: 'POST',
@@ -25,6 +28,7 @@ export function activateJob(ip, jobName){
     });
 }
 
+//change job coordinates and min temp ranges of aoi -> upload new job -> activate new job
 export function changeJob(ip, jobName, areaMaxTemp, targetMaxTemp){
     let changedJob = completeJob;
 
@@ -36,8 +40,6 @@ export function changeJob(ip, jobName, areaMaxTemp, targetMaxTemp){
 
     changedJob.rois[1].attributes[1].value = `{"emissivity":{"enabled":true,"value":0.92},"evaluationRange":{"enabled":true,"max":1973.15,"min":${targetMaxTemp + 273.15}}}`;
     changedJob.rois[1].attributes[2].value = `${targetMaxTemp + 273.15}`;
-
-    //changedJob.visualization.colormap === 'jet' ? changedJob.visualization.colormap = 'greyscale' : changedJob.visualization.colormap = 'jet';
 
     uploadJob(ip, changedJob);
     activateJob(ip, jobName);

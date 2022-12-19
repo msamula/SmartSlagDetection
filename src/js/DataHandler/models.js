@@ -1,3 +1,5 @@
+// models used by the app
+
 export class User{
     constructor(ip, username, password, clientID, clientSecret) {
         this.ip = ip;

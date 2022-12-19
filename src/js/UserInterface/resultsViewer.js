@@ -28,6 +28,8 @@ export function handleResults(json){
             totalSlag = Number((json.results[i].value[0]-273.15).toFixed(1));
         }
 
+
+        //reset charts and update time, vesselNo and heatNo when AOI_O_Count < 300 pixel
         if(json.results[i].id === 'AOI_0_Count'){
 
             if(json.results[i].value[0] < 300){
@@ -57,6 +59,7 @@ export function handleResults(json){
     slagDisplay.innerHTML = `${slag}%`;
     totalSlagDisplay.innerHTML = `${totalSlag}%`;
 
+    //alarm red or green
     if( slag < slagPercentage && totalSlag < totalSlagPercentage){
         alarm.style.backgroundColor = 'rgba( 0, 220, 0, 1)';
     }
