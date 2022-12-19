@@ -15,6 +15,6 @@ export function loadUserInterface(user, jobName, specialJobInfo, resizeFactor){
     drawAOI(specialJobInfo[1], specialJobInfo[3]);
 
     addStatusEvents(user);
-    addConfigEvents(user, jobName, specialJobInfo[2], specialJobInfo[3], resizeFactor);
+    addConfigEvents(user, jobName, specialJobInfo[1], specialJobInfo[2], specialJobInfo[3], resizeFactor);
 }
 

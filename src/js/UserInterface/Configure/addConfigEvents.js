@@ -1,6 +1,6 @@
 import {refreshImage} from "./refreshImage";
 import {updateChartLines} from "../Main/charts";
-import {drawPoints, getCanvasInfo, mouseDown, removeMousedown} from "./drawRect";
+import {drawPoints, getCanvasInfo, loadCoordinates, mouseDown, removeMousedown} from "./drawRect";
 import {changeJob} from "../../DataHandler/changeJob";
 import {drawAOI} from "../Main/drawAOI";
 import {jobUpdated} from "../Main/messages";
@@ -36,7 +36,9 @@ export function updateVesselHeat(){
     heatInput.placeholder = heatNo;
 }
 
-export function addConfigEvents(user, jobName, jobTempRanges, imageResolution, factor){
+export function addConfigEvents(user, jobName, coordinates, jobTempRanges, imageResolution, factor){
+
+    loadCoordinates(coordinates[0]);
 
     document.getElementById('configBtn').addEventListener('click', ()=>{
         refreshImage(imageResolution);
