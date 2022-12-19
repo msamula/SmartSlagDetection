@@ -1,5 +1,6 @@
 import {awaitNewToken, checkToken, expireTime, token} from "./getToken";
 import {handleTiffData} from "../DataHandler/tiffHandler";
+import {showError} from "../UserInterface/Main/messages";
 
 export async function getTiffData(user){
 
@@ -21,6 +22,7 @@ export async function getTiffData(user){
         handleTiffData(await response.arrayBuffer(), user);
     }
     if (response.status !== 200) {
+        //showError('No Image!','No image received from the camera');
         getTiffData(user);
     }
 }

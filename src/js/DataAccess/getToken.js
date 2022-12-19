@@ -1,4 +1,5 @@
 import {Token} from "../DataHandler/models";
+import {showError} from "../UserInterface/Main/messages";
 
 //TOKEN and token-expire-time used by other functions
 export let token, expireTime;
@@ -21,6 +22,10 @@ export function getToken(user)
             let response = JSON.parse(xmlHttp.responseText);
             token = new Token(response['access_token'],response['token_type'],response['expires_in'],response['scope'],response['refresh_token'],response['iat'],response['exp']);
             dateStart = new Date();
+        }
+        if(xmlHttp.readyState === 4 && xmlHttp.status !== 200) {
+
+            showError('Unauthorized', 'Please check the login data!');
         }
     }
 

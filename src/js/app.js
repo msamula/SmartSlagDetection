@@ -15,7 +15,7 @@ import {activateJob} from "./DataHandler/changeJob";
 
 
 //login data
-const ipAddress = '169.254.64.2';         /* 'localhost:8080' '169.254.64.2' */
+const ipAddress = '169.254.64.2';           /* 'localhost:8080' '169.254.64.2' */
 const clientID = 'irsxApp';
 const clientSecret = 'MnrY2L86pEQr53!6';
 const username = 'administrator';
@@ -31,13 +31,13 @@ const resizeFactor = 2;                     //resize the camera image by factor
 //create user
 let user = new User(ipAddress,username,password,clientID,clientSecret);
 
-//get token
-getToken(user);
-
-//activate Slag Detection Job
-activateJob(user.ip, jobName);
-
 window.addEventListener('DOMContentLoaded', () => {
+
+    //get token
+    getToken(user);
+
+    //activate Slag Detection Job
+    activateJob(user.ip, jobName);
 
     //specialJobInfo[0] = thresholds       specialJobInfo[1] = coordinates      specialJobInfo[2] = aoi temperature ranges     specialJobInfo[3] = cameraImage resolution
     let specialJobInfo = getJobInfo(user.ip, jobName);
