@@ -113,9 +113,12 @@ export function addConfigEvents(user, jobName, coordinates, jobTempRanges, image
 
     let drawAoiBtn = document.getElementById('drawAOIBtn');
     let saveAoiBtn = document.getElementById('saveAOIBtn');
+    let updateJobBtn =  document.getElementById('updateJobBtn');
 
     drawAoiBtn.addEventListener('click', ()=> {
         drawAoiBtn.disabled = true;
+        updateJobBtn.disabled = true;
+        updateJobBtn.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
         saveAoiBtn.style.backgroundColor = '#dc3545';
         getCanvasInfo(imageResolution, factor);
         document.getElementById('drawAoiSvg').style.display = 'initial';
@@ -125,7 +128,9 @@ export function addConfigEvents(user, jobName, coordinates, jobTempRanges, image
     saveAoiBtn.addEventListener('click',()=>{
         drawAoiBtn.innerHTML = '<img src="./media/rect_30.png" style="max-height: 20px;"> redraw Rectangle';
         drawAoiBtn.disabled = false;
+        updateJobBtn.disabled = false;
         saveAoiBtn.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+        updateJobBtn.style.backgroundColor = '#dc3545';
         removeMousedown();
         jobValuesChanged = true;
     });
@@ -133,7 +138,7 @@ export function addConfigEvents(user, jobName, coordinates, jobTempRanges, image
 
     /*UPDATE JOB BUTTON*/
 
-    document.getElementById('updateJobBtn').addEventListener('click', ()=>{
+    updateJobBtn.addEventListener('click', ()=>{
 
         if(jobValuesChanged){
             changeJob(user.ip, jobName, areaMaxTemp, targetMaxTemp);
