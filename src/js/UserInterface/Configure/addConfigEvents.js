@@ -142,7 +142,7 @@ export function addConfigEvents(user, jobName, coordinates, jobTempRanges, image
 
         if(jobValuesChanged){
             changeJob(user.ip, jobName, areaMaxTemp, targetMaxTemp);
-            drawAOI( drawPoints, imageResolution);
+            //drawAOI( drawPoints, imageResolution);
             jobValuesChanged = false;
         }
 
@@ -162,6 +162,7 @@ export function addConfigEvents(user, jobName, coordinates, jobTempRanges, image
             heatInput.value = '';
         }
 
+        location.reload();
         showUpdated();
     });
 }

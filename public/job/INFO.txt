@@ -1,0 +1,3 @@
+The slag sequences have a different resolution than the IRSX camera.
+
+Please create always a new job or use these jobs named "SlagDetection"!
