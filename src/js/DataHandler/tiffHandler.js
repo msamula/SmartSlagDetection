@@ -1,10 +1,10 @@
 import UTIF from './Helper/utif';
 import {TiffData} from "./models";
 import {getTiffData} from "../DataAccess/getTiff";
-import {targetMaxTemp} from "../UserInterface/Configure/addConfigEvents";
+import {targetMaxTemp, targetTempChanged, targetTempUpdated} from "../UserInterface/Configure/addConfigEvents";
 import {cameraImage} from "../UserInterface/Main/loadHtmlElements";
 
-let tiffData, canvas, ctx, tiffTagsLoaded = false, htmlElementsLoaded = false, targetTemp, bitmapData;
+let tiffData, canvas, ctx, tiffTagsLoaded = false, htmlElementsLoaded = false, targetTemp, bitmapData, initialChange = true;
 
 function getHtmlElements(imgWidth, imgHeight){
 
@@ -79,7 +79,7 @@ function createDataForBitmap(arr, width, height){
 
     //Grayscale tables for bit depths
     bitmapData += conv(0);
-    for (let s = Math.floor(255/(Math.pow(2, 8)-1)), i = s; i < 256; i += s)  {
+    for (let i = 1; i < 256; i++)  {
         bitmapData += conv(i + i*256 + i*65536);
     }
 
@@ -91,7 +91,7 @@ function arrayToBitmap(arr) {
 
     let data = bitmapData;
 
-    arr.reverse();
+    //arr.reverse();
 
     //Pixel data
     data += String.fromCharCode.apply(String, arr);
@@ -114,9 +114,11 @@ function pixelHandler(tiffData, Img8Bit, Img16Bit, imgWidth, imgHeight){
     ctx.clearRect(0, 0, imgWidth, imgHeight);
     let canvasData = ctx.getImageData(0, 0, imgWidth, imgHeight);
 
-    //if(targetTemp === undefined){
+    if(targetTempChanged || initialChange === true){
         targetTemp = tempToPixelValue(tiffData, (targetMaxTemp + 273.15));
-    //}
+        targetTempUpdated();
+        initialChange = false;
+    }
 
     for (let y = 0; y < imgHeight; y++) {
         for (let x = 0; x < imgWidth; x++) {

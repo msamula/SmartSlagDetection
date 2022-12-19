@@ -8,12 +8,17 @@ import {jobUpdated} from "../Main/messages";
 export let targetMaxTemp;               //changed to export bcs of getTiff
 export let slagPercentage = 40;
 export let totalSlagPercentage = 3.5;
+export let targetTempChanged = false;
 
 let heat, heatInput, vessel, vesselInput;
+let jobValuesChanged = false;
+
 let heatNo = 8729;
 let vesselNo = 1;
 
-let jobValuesChanged = false;
+export function targetTempUpdated(){
+    targetTempChanged = false;
+}
 
 /*show "job updated" alarm*/
 function showUpdated() {
@@ -84,6 +89,7 @@ export function addConfigEvents(user, jobName, jobTempRanges, imageResolution, f
         slagTempThresholdDisplay.innerHTML = `${slagTempThreshold.value} °C`;
         targetMaxTemp = Number(slagTempThreshold.value);
         jobValuesChanged = true;
+        targetTempChanged = true;
     });
 
     slagPerc.addEventListener('input',()=>{
