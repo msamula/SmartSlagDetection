@@ -2,7 +2,7 @@ import {refreshImage} from "./refreshImage";
 import {updateChartLines} from "../Main/charts";
 import {getCanvasInfo, loadCoordinates, mouseDown, removeMousedown} from "./drawRect";
 import {changeJob} from "../../DataHandler/changeJob";
-import {jobUpdated} from "../Main/messages";
+import {jobUpdated, showError} from "../Main/messages";
 
 export let targetMaxTemp;               //changed to export bcs of getTiff
 export let slagPercentage = 40;
@@ -142,6 +142,7 @@ export function addConfigEvents(user, jobName, coordinates, jobTempRanges, image
         if(jobValuesChanged){
 
             changeJob(user.ip, jobName, areaMaxTemp, targetMaxTemp);
+            showUpdated();
             location.reload();
         }
 
@@ -161,6 +162,12 @@ export function addConfigEvents(user, jobName, coordinates, jobTempRanges, image
             heatInput.value = '';
         }
 
-        showUpdated();
+        if(!jobValuesChanged){
+            document.getElementById('configureClose').click();
+            showError('Attention!', 'The job was not uploaded.');
+            setTimeout(()=>{
+                document.getElementById('error').setAttribute('style', 'display:none !important');
+            }, 1800);
+        }
     });
 }
