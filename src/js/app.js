@@ -16,7 +16,7 @@ import {activateJob} from "./DataHandler/changeJob";
 
 
 //login data
-const ipAddress = '169.254.64.2';          /* 'localhost:8080' '169.254.64.2' */
+const ipAddress = 'localhost:8080';          /* 'localhost:8080' '169.254.64.2' */
 const clientID = 'irsxApp';
 const clientSecret = 'MnrY2L86pEQr53!6';
 const username = 'administrator';
