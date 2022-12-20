@@ -6,11 +6,8 @@ let start = {};
 
 //coordinates for AOI
 export let coordinates = [{x: 137, y: 32},{ x: 267, y: 32}, {x: 267, y: 167}, { x: 137, y: 167}];
-export let drawPoints;
 
 export function loadCoordinates(jobAoiCoordinates){
-    drawPoints = jobAoiCoordinates;
-
     for (let i = 1; i < 5; i++) {
         coordinates[i-1].x = jobAoiCoordinates[i][0];
         coordinates[i-1].y = jobAoiCoordinates[i][1];
@@ -69,7 +66,6 @@ function mouseMove(e) {
     let width  = Math.abs(x - start.x);
     let height  = Math.abs(y - start.y);
 
-    drawPoints = [['RectLine',[Number((xStart/factor).toFixed(0)), Number((yStart/factor).toFixed(0))],[Number((xEnd/factor).toFixed(0)), Number((yStart/factor).toFixed(0))], [Number((xEnd/factor).toFixed(0)), Number((yEnd/factor).toFixed(0))], [Number((xStart/factor).toFixed(0)), Number((yEnd/factor).toFixed(0))]]];
     coordinates = [{x: Number((xStart/factor).toFixed(0)), y: Number((yStart/factor).toFixed(0))},{ x: Number((xEnd/factor).toFixed(0)), y: Number((yStart/factor).toFixed(0))}, {x: Number((xEnd/factor).toFixed(0)), y: Number((yEnd/factor).toFixed(0))}, { x: Number((xStart/factor).toFixed(0)), y: Number((yEnd/factor).toFixed(0))}];
 
     rect.setAttribute('x', `${xStart}`);

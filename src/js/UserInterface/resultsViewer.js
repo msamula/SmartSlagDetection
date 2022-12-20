@@ -65,7 +65,7 @@ export function handleResults(json){
     }
 
     if( slag >= slagPercentage || totalSlag >= totalSlagPercentage){
-        alarm.style.backgroundColor = 'rgba( 200, 0, 0, 1)';
+        alarm.style.backgroundColor = '#9D0000';
     }
 
     updateCharts( slag, totalSlag);

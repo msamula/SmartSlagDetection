@@ -1,5 +1,5 @@
 {
-  "exportDate": "2022-12-19T13:41:15.719Z",
+  "exportDate": "2022-12-20T09:28:52.361Z",
   "exporterVersion": 1,
   "jobs": [
     {
@@ -7,7 +7,7 @@
         "id": "SlagDetection",
         "description": "",
         "creationDate": "2022-12-19T13:25:10.984Z",
-        "lastModifiedDate": "2022-12-19T13:39:29.909Z",
+        "lastModifiedDate": "2022-12-20T09:27:18.315Z",
         "revision": {
           "major": 1,
           "minor": 4
@@ -526,7 +526,7 @@
         "attributes": []
       },
       "refImages": [],
-      "processingScript": "--GENERATED_CODE ONLY EDIT USER SECTIONS\n\n-- #INFO#\n-- Job: SlagDetection\n-- Creation date: 12-19-22,02:27:12\n-- Modified date: 12-19-22,02:39:27\n-- MD5: 1431499d50f6fb022ebde1e88a27b0c6\n-- #END INFO#\n\n--GENERATED_CODE DO NOT EDIT\n\neval_AOI_0 = Statistic[\"AOI_0\"]\neval_AOI_1 = Statistic[\"AOI_1\"]\n\n--GENERATED_CODE_END\n\n--USER_GLOBAL_CODE_START\nlocal SlagSumOld = 0 + 273.15\nlocal SlagSumNew = 0 + 273.15\n\nlocal SumGesOld = 0 + 273.15\nlocal SumGesNew = 0 + 273.15\n--Results[\"TotalSlag\"] = 0 + 273.15\n--USER_GLOBAL_CODE_END\n\nfunction evaluate()\n    --USER_EVAL_PRE_START\n    Results[\"TotalSlag\"] = 0 + 273.15\n    --USER_EVAL_PRE_END\n\n    --GENERATED_CODE DO NOT EDIT\n\n    Results[\"AOI_0_Area\"] = eval_AOI_0:area()\n    Results[\"AOI_0_Area_Bin\"] = false\n    Results[\"AOI_0_Result\"] = eval_AOI_0:mean()\n    Results[\"AOI_0_Result_Bin\"] = false\n    Results[\"AOI_1_Result\"] = eval_AOI_1:mean()\n    Results[\"AOI_1_Result_Bin\"] = false\n    Results[\"AOI_1_Count\"] = eval_AOI_1:count()\n    Results[\"AOI_1_Count_Bin\"] = false\n    Results[\"AOI_0_Count\"] = eval_AOI_0:count()\n    Results[\"AOI_0_Count_Bin\"] = false\n    Results[\"MaxTemp\"] = eval_AOI_0:max()\n    Results[\"MaxTemp_Bin\"] = false\n    Results[\"TotalSlag\"] = eval_AOI_0:mean()\n    Results[\"TotalSlag_Bin\"] = false\n\n    ---GENERATED_CODE_END\n\n    --USER_EVAL_POST_START\n    Results[\"AOI_0_Result\"] = ((Results[\"AOI_0_Count\"]:getValue() / Results[\"AOI_0_Area\"]:getValue()) * 100) + 273.15\n\n    if (Results[\"AOI_0_Result\"]:getValue() < (0.1 + 273.15)) then\n        SlagSumOld = 0\n        SumGesOld = 0\n    end\n\n    Results[\"AOI_1_Result\"] = ((Results[\"AOI_1_Count\"]:getValue() / Results[\"AOI_0_Count\"]:getValue()) * 100) + 273.15\n\n    SlagSumNew = Results[\"AOI_1_Count\"]:getValue()\n    SlagSumOld = SlagSumNew + SlagSumOld\n\n    SumGesNew = Results[\"AOI_0_Count\"]:getValue()\n    SumGesOld = SumGesNew + SumGesOld\n\n    if (SumGesOld > 50000) then\n        Results[\"TotalSlag\"] = ((SlagSumOld / SumGesOld) * 100) + 273.15\n    else\n        Results[\"TotalSlag\"] = 0 + 273.15\n    end\n    --USER_EVAL_POST_END\nend\n"
+      "processingScript": "--GENERATED_CODE ONLY EDIT USER SECTIONS\n\n-- #INFO#\n-- Job: SlagDetection\n-- Creation date: 12-19-22,02:27:12\n-- Modified date: 12-20-22,10:26:43\n-- MD5: b2863db15e5c84260d878c37f9e7a46d\n-- #END INFO#\n\n--GENERATED_CODE DO NOT EDIT\n\neval_AOI_0 = Statistic[\"AOI_0\"]\neval_AOI_1 = Statistic[\"AOI_1\"]\n\n--GENERATED_CODE_END\n\n--USER_GLOBAL_CODE_START\nlocal SlagSumOld = 0 + 273.15\nlocal SlagSumNew = 0 + 273.15\n\nlocal SumGesOld = 0 + 273.15\nlocal SumGesNew = 0 + 273.15\n--Results[\"TotalSlag\"] = 0 + 273.15\n--USER_GLOBAL_CODE_END\n\nfunction evaluate()\n    --USER_EVAL_PRE_START\n    Results[\"TotalSlag\"] = 0 + 273.15\n    --USER_EVAL_PRE_END\n\n    --GENERATED_CODE DO NOT EDIT\n\n    Results[\"AOI_0_Area\"] = eval_AOI_0:area()\n    Results[\"AOI_0_Area_Bin\"] = false\n    Results[\"AOI_0_Result\"] = eval_AOI_0:mean()\n    Results[\"AOI_0_Result_Bin\"] = false\n    Results[\"AOI_1_Result\"] = eval_AOI_1:mean()\n    Results[\"AOI_1_Result_Bin\"] = false\n    Results[\"AOI_1_Count\"] = eval_AOI_1:count()\n    Results[\"AOI_1_Count_Bin\"] = false\n    Results[\"AOI_0_Count\"] = eval_AOI_0:count()\n    Results[\"AOI_0_Count_Bin\"] = false\n    Results[\"MaxTemp\"] = eval_AOI_0:max()\n    Results[\"MaxTemp_Bin\"] = false\n    Results[\"TotalSlag\"] = eval_AOI_0:mean()\n    Results[\"TotalSlag_Bin\"] = false\n\n    ---GENERATED_CODE_END\n\n    --USER_EVAL_POST_START\n    Results[\"AOI_0_Result\"] = ((Results[\"AOI_0_Count\"]:getValue() / Results[\"AOI_0_Area\"]:getValue()) * 100) + 273.15\n\n    if (Results[\"AOI_0_Result\"]:getValue() < (0.1 + 273.15)) then\n        SlagSumOld = 0\n        SumGesOld = 0\n    end\n\n    Results[\"AOI_1_Result\"] = ((Results[\"AOI_1_Count\"]:getValue() / Results[\"AOI_0_Count\"]:getValue()) * 100) + 273.15\n\n    SlagSumNew = Results[\"AOI_1_Count\"]:getValue()\n    SlagSumOld = SlagSumNew + SlagSumOld\n\n    SumGesNew = Results[\"AOI_0_Count\"]:getValue()\n    SumGesOld = SumGesNew + SumGesOld\n\n    Results[\"TotalSlag\"] = ((SlagSumOld / SumGesOld) * 100) + 273.15\n    --USER_EVAL_POST_END\nend\n"
     }
   ]
 }

@@ -1,8 +1,7 @@
 import {refreshImage} from "./refreshImage";
 import {updateChartLines} from "../Main/charts";
-import {drawPoints, getCanvasInfo, loadCoordinates, mouseDown, removeMousedown} from "./drawRect";
+import {getCanvasInfo, loadCoordinates, mouseDown, removeMousedown} from "./drawRect";
 import {changeJob} from "../../DataHandler/changeJob";
-import {drawAOI} from "../Main/drawAOI";
 import {jobUpdated} from "../Main/messages";
 
 export let targetMaxTemp;               //changed to export bcs of getTiff
@@ -143,10 +142,6 @@ export function addConfigEvents(user, jobName, coordinates, jobTempRanges, image
         if(jobValuesChanged){
 
             changeJob(user.ip, jobName, areaMaxTemp, targetMaxTemp);
-
-            //drawAOI( drawPoints, imageResolution);
-            //jobValuesChanged = false;
-
             location.reload();
         }
 
